@@ -17,8 +17,7 @@ const propositionSchema = new mongoose.Schema({
   propositionMessage: {
     type: String,
     required: true,
-    
-  }
+  },
 });
 
 const propositionModel = mongoose.model("proposition", propositionSchema);

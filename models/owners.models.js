@@ -5,44 +5,48 @@ const { Schema, model } = require("mongoose");
 
 const ownerSchema = new Schema({
   image: {
-    type: String,
-    default: ``, 
+    type: [String],
+    default: `https://images.media-allrecipes.com/images/75131.jpg`,
   },
-  personalData: {
-    name: String,
-    lastName: String,
-    email: String,
-    phoneNr: Number,
+  name: {
+    type: String,
+    requred: true,
+  },
+  email: {
+    type: String,
+    requred: true,
   },
   address: {
-    street: String,
-    zipCode: String,
-    city: String,
-    country: String,
-  },
-  username: {
     type: String,
-    unique: true,
-    required: true,
+  },
+  city: {
+    type: String,
+    enum: [`Amsterdam`, `Berlin`],
+  },
+  country: {
+    type: String,
+    enum: [`Netherlands`, `Germany`],
   },
   password: {
     type: String,
     required: true,
   },
-  pet: {
-    name: String,
-    petType: {
-      type: String,
-      enum: [`cat`, `dog`],
-    },
-    age: Number,
-    aboutPet: String,
-    image: {
-      type: String,
-      default: ``, // paste an image in here
-    },
+  aboutMe: {
+    type: String,
   },
-  placeInfo: String,
+  petName: {
+    type: String,
+  },
+  pet: {
+    type: String,
+    enum: [`cat`, `dog`],
+  },
+  petAge: {
+    type: Number,
+  },
+  placeInfo: {
+    type:String,
+  },
 });
 
 const ownerModel = model("owner", ownerSchema);

@@ -3,24 +3,26 @@ const { Schema, model } = require("mongoose");
 const guestSchema = new Schema({
   image: {
     type: String,
-    default: ``, 
+    default: ``,
   },
-  personalData: {
-    name: String,
-    lastName: String,
-    email: String,
-    phoneNr: Number,
+  name: {
+    type: String,
+    requred: true,
+  },
+  email: {
+    type: String,
+    requred: true,
   },
   address: {
-    street: String,
-    zipCode: String,
-    city: String,
-    country: String,
-  },
-  username: {
     type: String,
-    unique: true,
-    required: true,
+  },
+  city: {
+    type: String,
+    enum: [`Amsterdam`, `Berlin`],
+  },
+  country: {
+    type: String,
+    enum: [`Netherlands`, `Germany`],
   },
   password: {
     type: String,
@@ -30,9 +32,10 @@ const guestSchema = new Schema({
     type: String,
     enum: [`cat`, `dog`],
   },
-  aboutMe: String,
+  aboutMe: {
+    type: String,
+  },
 });
-
 
 const guestModel = model("guest", guestSchema);
 

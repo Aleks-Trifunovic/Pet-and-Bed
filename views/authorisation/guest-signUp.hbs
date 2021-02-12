@@ -1,29 +1,50 @@
 <h1>Welcome Guest</h1>
 
 <form method="POST" action="/guestSignUp">
-  <div class="guest-form"><img src="" alt=""></div>
+  <div class="guestForm"><img src="" alt=""></div>
+  
   <div class="guest-form">
     <label for="example-name" class="form-label">Name</label>
-    <input name="guest-name" type="text" class="form-control" id="example-name">
+    <input name="guestName" type="text" class="form-control" id="example-name">
 
-    <label for="example-lastname" class="form-label">Last name</label>
-    <input name="guest-lastname" type="text" class="form-control" id="example-lastname">
-
-    <label for="example-input-email" class="form-label">email</label>
-    <input name="guest-email" type="Email" class="form-control" id="example-lastname">
-  
-    <label for="example-phoneNr" class="form-label">Phone Nr</label>
-    <input name="guest-phoneNr" type="number" class="form-control" id="example-lastname">
+    <label for="example-input-email" class="form-label">Email</label>
+    <input name="guestEmail" type="Email" class="form-control" id="example-email">
   
   </div>
-  
-  {{!-- <div class="mb-3">
-    <label for="exampleInputDescription1" class="form-label">propellers</label>
-    <input  name="propellers" type="number" class="form-control" id="exampleInputDescription1">
+
+  <div class="guest-form">
+    <label for="example-street" class="form-label">Address</label>
+    <input name="guestAddress" type="text" class="form-control" id="example-address">
+    
+  <div class="form-check guest-form">
+    <input class="form-check-input" value="Amsterdam" type="radio" name="guestCity" id="flexRadioDefault1">
+    <label class="formCheckLabel" for="Amsterdam" >Amsterdam</label>
   </div>
-  <div class="mb-3">
-    <label for="exampleInputDescription1" class="form-label">max speed</label>
-    <input  name="maxSpeed" type="number" class="form-control" id="exampleInputDescription1">
-  </div> --}}
+  <div class="form-check guest-form"> 
+    <input class="form-check-input" value="Berlin" checked type="radio" name="guestCity" id="flexRadioDefault2" checked>
+    <label class="formCheckLabel" for="Berlin">
+      Berlin
+    </label>
+  </div>
+<br>
+  <div>
+    <div class="form-check guest-form">
+      <input class="form-check-input" value="Netherlands"type="radio" name="guestCountry" id="flexRadioDefault1">
+      <label class="formCheckLabel" for="Netherlands">
+        Netherlands
+      </label>
+    </div>
+    <div class="form-check guest-form">
+      <input class="form-check-input" value="Germany" type="radio" name="guestCountry" id="flexRadioDefault2">
+      <label class="formCheckLabel" for="Germany">
+        Germany
+      </label>
+    </div>
+  </div>
+  <div>
+    <label for="example-password" class="form-label">Password</label>
+    <input name="guestPassword" type="password" class="form-control" id="example-password">
+  </div>
+
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
