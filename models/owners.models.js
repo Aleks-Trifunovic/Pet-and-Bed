@@ -1,16 +1,10 @@
-const { Schema, model } = require("mongoose");
-//const mongoose = require(`mongoose`);   whats the diference between these two?
+const mongoose = require("mongoose");
 
-//schema for an owner
-
-const ownerSchema = new Schema({
-  image: {
-    type: [String],
-    default: `https://images.media-allrecipes.com/images/75131.jpg`,
-  },
+//schema for owner
+const ownerSchema = new mongoose.Schema({
   name: {
     type: String,
-    requred: true,
+    required: true,
   },
   email: {
     type: String,
@@ -21,35 +15,32 @@ const ownerSchema = new Schema({
   },
   city: {
     type: String,
-    enum: [`Amsterdam`, `Berlin`],
+    enum: ["Amsterdam", "Berlin"],
   },
   country: {
     type: String,
-    enum: [`Netherlands`, `Germany`],
+    enum: ["Netherlands", "Germany"],
   },
   password: {
     type: String,
     required: true,
   },
+  ownerPet: {
+    type: String,
+    enum: ["cat", "dog", "both"],
+  },
+  ownerPetName: {
+    type: String,
+  },
   aboutMe: {
     type: String,
   },
-  petName: {
+  image: {
     type: String,
-  },
-  pet: {
-    type: String,
-    enum: [`cat`, `dog`],
-  },
-  petAge: {
-    type: Number,
-  },
-  placeInfo: {
-    type:String,
+    default: "",
   },
 });
 
-const ownerModel = model("owner", ownerSchema);
-
+let ownerModel = mongoose.model("owner", ownerSchema);
 
 module.exports = ownerModel;

@@ -1,13 +1,9 @@
-const { Schema, model } = require("mongoose");
+const mongoose = require("mongoose")
 //schema for guest
-const guestSchema = new Schema({
-  image: {
-    type: String,
-    default: ``,
-  },
+const guestSchema = new mongoose.Schema({
   name: {
     type: String,
-    requred: true,
+    required: true,
   },
   email: {
     type: String,
@@ -18,25 +14,30 @@ const guestSchema = new Schema({
   },
   city: {
     type: String,
-    enum: [`Amsterdam`, `Berlin`],
+    enum: ["Amsterdam", "Berlin"],
   },
   country: {
     type: String,
-    enum: [`Netherlands`, `Germany`],
+    enum: ["Netherlands", "Germany"],
   },
   password: {
     type: String,
     required: true,
   },
-  preferencePet: {
+  guestPet: {
     type: String,
-    enum: [`cat`, `dog`],
+    enum: ["cat", "dog", "both"],
   },
   aboutMe: {
     type: String,
   },
+  image: {
+      type: String,
+      default: "",
+  }
 });
 
-const guestModel = model("guest", guestSchema);
 
-module.export = guestModel;
+let guestModel = mongoose.model("guest", guestSchema);
+
+module.exports = guestModel;

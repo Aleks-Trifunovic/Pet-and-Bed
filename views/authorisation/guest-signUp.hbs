@@ -17,11 +17,11 @@
     <input name="guestAddress" type="text" class="form-control" id="example-address">
     
   <div class="form-check guest-form">
-    <input class="form-check-input" value="Amsterdam" type="radio" name="guestCity" id="flexRadioDefault1">
+    <input value="Amsterdam" class="form-check-input" type="radio" name="guestCity" id="flexRadioDefault1">
     <label class="formCheckLabel" for="Amsterdam" >Amsterdam</label>
   </div>
   <div class="form-check guest-form"> 
-    <input class="form-check-input" value="Berlin" checked type="radio" name="guestCity" id="flexRadioDefault2" checked>
+    <input value="Berlin" class="form-check-input"  type="radio" name="guestCity" id="flexRadioDefault2">
     <label class="formCheckLabel" for="Berlin">
       Berlin
     </label>
@@ -29,13 +29,13 @@
 <br>
   <div>
     <div class="form-check guest-form">
-      <input class="form-check-input" value="Netherlands"type="radio" name="guestCountry" id="flexRadioDefault1">
+      <input value="Netherlands" class="form-check-input" type="radio" name="guestCountry" id="flexRadioDefault1">
       <label class="formCheckLabel" for="Netherlands">
         Netherlands
       </label>
     </div>
     <div class="form-check guest-form">
-      <input class="form-check-input" value="Germany" type="radio" name="guestCountry" id="flexRadioDefault2">
+      <input class="form-check-input"  type="radio" name="guestCountry" id="flexRadioDefault2">
       <label class="formCheckLabel" for="Germany">
         Germany
       </label>
@@ -45,6 +45,22 @@
     <label for="example-password" class="form-label">Password</label>
     <input name="guestPassword" type="password" class="form-control" id="example-password">
   </div>
-
+    <div class="form-check guest-form">
+    <input value="cat" class="form-check-input" type="radio" name="guestPet" id="flexRadioDefault1">
+    <label class="formCheckLabel" for="cat" >Cat</label>
+  </div>
+    <div class="form-check guest-form">
+    <input value="dog" class="form-check-input" type="radio" name="guestPet" id="flexRadioDefault1">
+    <label class="formCheckLabel" for="dog">Dog</label>
+  </div>
+  </div>
+    <div class="form-check guest-form">
+    <input value="both" class="form-check-input" type="radio" name="guestPet" id="flexRadioDefault1">
+    <label class="formCheckLabel" for="both">Both</label>
+  </div>
+  <div class="guest-form">
+    <label for="example-name" class="form-label">About me</label>
+    <input name="aboutMe" type="text" class="form-control" id="example-name"></div>
+<br>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
