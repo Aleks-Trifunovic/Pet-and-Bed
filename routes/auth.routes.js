@@ -82,10 +82,29 @@ router.post("/ownerSignUp", (req, res, next) => {
 
 
 
-
-
 router.get("/logIn", (req, res, next) => {
   res.render("authorisation/login.hbs");
 });
+
+router.post("/logIn", (req, res, next) => {
+  const { logInName, logInEmail, guestPassword } = req.body;
+  console.log(req.body)
+    if (!logInName.length || !logInEmail.length || !guestPassword.length) {
+      res.render("authorisation/login.hbs", { msg: "Please enter all fields" });
+      return;
+    }
+     let re = /\S+@\S+\.\S+/;
+     if (!re.test(logInEmail)) {
+       res.render("auth/signup", { msg: "Email not in valid format" });
+       return;
+     }
+});
+
+//we are getting an error with the password when we try to login. 
+//if you are trying to log in from a guest acc then in if condition this needs to be present "!guestPassword.length".
+// if you are logging in from an owners acc then !ownerPassword.length should be there. find a way to make it dinamic perhaps. or whatever.
+
+
+
 
 module.exports = router;
