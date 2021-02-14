@@ -10,14 +10,32 @@ router.get("/", (req, res, next) => {
   res.render("homepage.hbs");
 });
 
-
-router.get("/allpetowners", (req,res, next)=> {
-  res.render("all-pet-owners.hbs");
+//get, find and show all owners on allowners Page
+router.get("/allpetowners", (req,res)=> {
+  ownerModel.find()
+    .then((owners)=> { 
+      res.render("all-pet-owners.hbs", { owners });
+      
+    })
+    .catch(()=>{
+      console.log("something went wrong finding owners,time to panic")
+    })
+  
 });
+// route from allowners page to search and filtered owners page
 
-router.get("/allpetlovers", (req, res, next) => {
-  res.render("all-pet-lovers.hbs");
+router.get("/allfilteredowners", (req, res, next)=> {
+  res.render("filtered-pet-owners.hbs");
 });
+//how to make a search button on all pet owners page send use to filtered owners page? 
+
+
+
+
+
+// router.get("/allpetlovers", (req, res, next) => {
+//   res.render("all-pet-lovers.hbs");
+// });
 
 
 

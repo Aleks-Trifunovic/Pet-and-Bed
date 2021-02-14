@@ -28,9 +28,11 @@ const ownerSchema = new mongoose.Schema({
   ownerPet: {
     type: String,
     enum: ["cat", "dog", "both"],
+    required: true,
   },
   ownerPetName: {
     type: String,
+    required: true,
   },
   aboutMe: {
     type: String,

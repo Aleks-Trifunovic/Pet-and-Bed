@@ -11,7 +11,7 @@ router.get("/guestSignUp", (req, res, next) => {
 });
 
 router.post("/guestSignUp", (req, res, next) => {
-  const {guestName,guestEmail,guestAddress,guestCity,guestCountry,guestPassword,guestPet,aboutMe} = req.body;
+  const {guestName,guestEmail,guestAddress,guestCity,guestCountry,guestPassword,guestPet,ownerPetName,aboutMe} = req.body;
   let myNewGuest = {
     name: guestName,
     email: guestEmail,
@@ -20,6 +20,7 @@ router.post("/guestSignUp", (req, res, next) => {
     country: guestCountry,
     password: guestPassword,
     guestPet: guestPet,
+    petName: ownerPetName,
     aboutMe: aboutMe,
   };
 
@@ -42,8 +43,7 @@ router.post("/guestSignUp", (req, res, next) => {
   // }
 
   // this block of code sends our guest data to mongoDB
-  guestModel
-    .create(myNewGuest)
+  guestModel.create(myNewGuest)
     .then(() => {
       res.redirect("/logIn");
     })
