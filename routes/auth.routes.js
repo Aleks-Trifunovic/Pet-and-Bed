@@ -115,7 +115,7 @@ router.post("/logIn", (req, res, next) => {
   console.log(req.body)
   if (!logInName.length || !logInEmail.length || !guestPassword) {
     res.render("authorisation/login.hbs", { msg: "Please enter all fields" });
-    return;
+    
   }
   //email validation
   // let re = /\S+@\S+\.\S+/;
