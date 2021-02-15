@@ -25,35 +25,7 @@ router.post("/guestSignUp", (req, res, next) => {
     let salt = bcrypt.genSaltSync(10);
     let hash = bcrypt.hashSync(guestPassword, salt);
     console.log(hash)
-  // let myNewGuest = {
-  //   name: guestName,
-  //   email: guestEmail,
-  //   city: guestCity,
-  //   address: guestAddress,
-  //   country: guestCountry,
-  //   password: guestPassword,
-  //   guestPet: guestPet,
-  //   petName: ownerPetName,
-  //   aboutMe: aboutMe,
-  // };
 
-  // Validating
-  // if (!username.length || !email.length || !password.length) {
-  //   res.render("auth/signup.hbs", { msg: "Please enter all fields" });
-  //   return;
-  //   // Email Validation
-  //   let re = /\S+@\S+\.\S+/;
-  //   if (!re.test(email)) {
-  //     res.render("auth/signup", { msg: "Email not in valid format" });
-  //     return;
-  //   }
-  // PASWORD VALIDATION
-  // let regexPass = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z!#$%&? "])[a-zA-Z0-9!#$%&?]{8,20}$/;
-  // if (!regexPass.test(password)) {
-  //    res.render('auth/signup', {msg: 'Password needs to have special characters, some numbers and be 6 characters atleast'})
-  //    return;
-  // }
-  // }
 
   // this block of code sends our guest data to mongoDB
     console.log(req.body)
@@ -83,19 +55,21 @@ router.get("/ownerSignUp", (req, res, next) => {
 
 router.post("/ownerSignUp", (req, res, next) => {
   const {ownerName,ownerEmail,ownerAddress,ownerCity,ownerCountry,ownerPassword,ownerPet,aboutMe,ownerPetName } = req.body;
-  let myNewOwner = {
-    name: ownerName,
-    email: ownerEmail,
-    city: ownerCity,
-    address: ownerAddress,
-    country: ownerCountry,
-    password: ownerPassword,
-    ownerPet: ownerPet,
-    aboutMe: aboutMe,
-    ownerPetName: ownerPetName,
-  };
+  let salt = bcrypt.genSaltSync(10);
+  let hash = bcrypt.hashSync(ownerPassword, salt);
+  console.log(hash);
 
-  ownerModel.create(myNewOwner)
+  ownerModel.create({
+      name: ownerName,
+      email: ownerEmail,
+      address: ownerAddress,
+      city: ownerCity,
+      country: ownerCountry,
+      password: hash,
+      ownerPet: ownerPet,
+      aboutMe: aboutMe,
+      ownerPetName: ownerPetName,
+    })
     .then(() => {
       res.redirect("/logIn");
     })
@@ -111,24 +85,60 @@ router.get("/logIn", (req, res, next) => {
 });
 
 router.post("/logIn", (req, res, next) => {
-  const { logInName, logInEmail, guestPassword } = req.body;
+  const { logInEmail, logInPassword } = req.body;
   console.log(req.body)
-  if (!logInName.length || !logInEmail.length || !guestPassword) {
+  if (!logInEmail || !logInPassword) {
     res.render("authorisation/login.hbs", { msg: "Please enter all fields" });
-    
+    return;
   }
-  //email validation
-  // let re = /\S+@\S+\.\S+/;
-  // if (!re.test(logInEmail)) {
-  //   res.render("auth/signup", { msg: "Email not in valid format" });
-  //   return;
-  // }
+  // email validation
+  let re = /\S+@\S+\.\S+/;
+  if (!re.test(logInEmail)) {
+    res.render("authorisation/login", { msg: "Email not in valid format" });
+    return;
+  }
   // PASWORD VALIDATION
-  // let regexPass = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z!#$%&? "])[a-zA-Z0-9!#$%&?]{8,20}$/;
-  // if (!regexPass.test(password)) {
-  //    res.render('auth/signup', {msg: 'Password needs to have special characters, some numbers and be 6 characters atleast'})
-  //    return;
-  // }
+  let regexPass = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z!#$%&? "])[a-zA-Z0-9!#$%&?]{8,20}$/;
+  if (!regexPass.test(logInPassword)) {
+    res.render("authorisation/login", {msg: "Password incorrect",});
+  }
+
+// handle post requests when the user submits something in the sign in form
+router.post("/logIn", (req, res, next) => {
+    const {email, password} = req.body
+    // implement the same set of validations as you did in signup as well
+    // NOTE: We have used the Async method here. Its just to show how it works
+    guestModel.findOne({email: email})
+        .then((result) => {
+            // if user exists
+            if (result) {
+                //check if the entered password matches with that in the DB
+                bcrypt.compare(password, result.password)
+                    .then((isMatching) => {
+                        if (isMatching) {
+                            // when the user successfully signs up
+                            req.session.userData = result
+                            req.session.areyoutired = false
+                            res.redirect("/profile")
+                        }
+                        else {
+                            // when passwords don’t match
+                            res.render("auth/signin.hbs", {msg: "Passwords dont match"})
+                        }
+                    })
+            }
+            else {
+                // when the user signs in with an email that does not exits
+                res.render("auth/signin.hbs", {msg: "Email does not exist"})
+            }
+        })
+        .catch((err) => {
+            next(err)
+        })
+});
+
+
+
   //   let salt = bcrypt.genSaltSync(10);
   //   let hash = bcrypt.hashSync(password, salt);
   //   UserModel.create({ username, email, password: hash });
