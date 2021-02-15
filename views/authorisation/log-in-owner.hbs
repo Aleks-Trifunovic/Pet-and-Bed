@@ -1,0 +1,19 @@
+<h1>Hi owner</h1>
+
+<form method="POST" action="/logInOwner">
+<div class="logIn-form">
+    
+
+    <label for="example-input-email" class="form-label">Email</label>
+    <input name="logInEmail" type="Email" class="form-control" id="example-email">
+  
+  </div>
+  <div>
+    <label for="example-password" class="form-label">Password</label>
+    <input name="logInPassword" type="password" class="form-control" id="example-password">
+  </div>
+    <button type="submit" class="btn btn-primary">Log in</button>
+</form>
+{{#if msg}}
+ <div class="error">{{msg}}</div>
+{{/if}}

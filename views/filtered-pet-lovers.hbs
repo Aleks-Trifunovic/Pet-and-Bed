@@ -1,0 +1,12 @@
+
+<h1>Here are your matches</h1>
+
+<a href="/allguests">Edit your search</a>
+
+{{#each result}}
+  <a href="/filteredGuests/{{ this._id }}"></a>
+      <div>{{this.name}}</div>  
+      <div>{{this.city}}</div>
+      <br>
+      
+ {{/each}} 

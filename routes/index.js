@@ -34,7 +34,6 @@ router.get("/allpetowners", (req,res)=> {
 router.get("/filteredowners", (req, res, next)=> {  
   res.render("filtered-pet-owners.hbs");
 });
-
 router.post("/filteredowners", (req,res,next) =>{
     const { ownerPet, ownerCity } = req.body;
     console.log(req.body)
@@ -54,17 +53,13 @@ router.post("/filteredowners", (req,res,next) =>{
           console.log("sth is wrong", err);
       })
 });
-//how to make a search button on all pet owners page send use to filtered owners page? 
-
-router.get("/ownerdetails", (req, res, next) => {
-
-  res.render("details/owner-details.hbs");
-});
 
 
-// router.get("/allguests", (req, res, next) => {
-//   res.render("all-pet-lovers.hbs");
+// router.get("/ownerdetails", (req, res, next) => { //last page for owners
+
+//   res.render("details/owner-details.hbs");
 // });
+
 
 router.get("/allguests", (req, res) => {
   guestModel.find()
@@ -89,6 +84,39 @@ router.get("/allguests", (req, res) => {
     });
 });
 
+router.get("/ownerProfile", (req,res) => {
+  res.render("profiles/owner-profile.hbs")
+});
+
+router.get("/guestProfile", (req, res) => {
+  res.render("profiles/guest-profile.hbs");
+});
+
+
+
+//route from all guests to filtered guests
+router.get("/filteredGuests", (req, res, next) => {
+  res.render("filtered-pet-lovers.hbs")
+})
+router.post("/filteredGuests", (req, res, next) => {
+  const { guestName, guestCity } = req.body;
+  console.log(req.body);
+  let obj = {};
+  if (guestName) {
+    obj.guestName = guestName;
+  }
+  if (guestCity) {
+    obj.city = guestCity;
+  }
+  guestModel.find(obj)
+    .then((result) => {
+      console.log(result);
+      res.render("filtered-pet-lovers.hbs", { result });
+    })
+    .catch((err) => {
+      console.log("sth is wrong", err);
+    });
+});
 
 module.exports = router;
 

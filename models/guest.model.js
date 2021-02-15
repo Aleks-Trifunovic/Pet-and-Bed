@@ -28,6 +28,7 @@ const guestSchema = new mongoose.Schema({
   guestPet: {
     type: String,
     enum: ["cat", "dog", "both"],
+    required: true,
   },
   aboutMe: {
     type: String,
