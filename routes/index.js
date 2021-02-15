@@ -62,6 +62,34 @@ router.get("/ownerdetails", (req, res, next) => {
 });
 
 
+// router.get("/allguests", (req, res, next) => {
+//   res.render("all-pet-lovers.hbs");
+// });
+
+router.get("/allguests", (req, res) => {
+  guestModel.find()
+    .then((guests) => {
+      let cities = guests  
+        .map((singleGuest) => {
+          console.log(singleGuest.city);
+          return singleGuest.city;
+        })
+        .filter((elem, index, arr) => arr.indexOf(elem) === index);
+            
+      let petType = guests
+        .map((singleGuest) => {
+          console.log(singleGuest.guestPet);
+          return singleGuest.guestPet;
+        })
+        .filter((elem, index, arr) => arr.indexOf(elem) === index);
+      res.render("all-pet-lovers.hbs", { guests, cities, petType });
+    })
+    .catch((err) => {
+      console.log("something went wrong finding guests,time to panic --->", err);
+    });
+});
+
+
 module.exports = router;
 
 

@@ -15,6 +15,7 @@ const guestSchema = new mongoose.Schema({
   city: {
     type: String,
     enum: ["Amsterdam", "Berlin"],
+    required: true,
   },
   country: {
     type: String,

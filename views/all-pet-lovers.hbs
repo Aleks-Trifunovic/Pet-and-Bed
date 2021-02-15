@@ -1,1 +1,30 @@
-<h1>Hi pet lovers</h1>
+<h1>Find your perfect match!</h1>
+
+
+<form method="POST" action="/allguests">
+
+{{#each cities}}
+
+  <div class="form-check guest-form">
+    <input value="{{this}}" class="form-check-input" type="radio" name="guestCity" id="flexRadioDefault1">
+    <label class="formCheckLabel" for="{{this}}" >{{this}}</label>
+  </div>
+
+{{/each}}
+
+{{#each petType}}
+  <div class="form-check guest-form">
+    <input value="{{this}}" class="form-check-input" type="radio" name="guestPet" id="flexRadioDefault1">
+    <label class="formCheckLabel" for="{{this}}" >{{this}}</label>
+  </div>
+  {{/each}}
+
+  <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+
+ {{#each guests}}
+  <a href="/allguests/{{ this._id }}"></a>
+      <div>{{this.name}}</div>  
+      <div>{{this.city}}</div>
+      <br>
+{{/each}}
