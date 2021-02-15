@@ -13,8 +13,16 @@ router.get("/", (req, res, next) => {
 //get, find and show all owners on allowners Page
 router.get("/allpetowners", (req,res)=> {
   ownerModel.find()
-    .then((owners)=> { 
-      res.render("all-pet-owners.hbs", { owners });
+    .then((owners)=> {
+      let cities = owners.map((singleOwner)=>{
+          return singleOwner.city
+      }).filter((elem, index, arr) => arr.indexOf(elem) === index);
+
+      let petType = owners
+        .map((singleOwner) => {
+          return singleOwner.ownerPet;
+        }).filter((elem, index, arr) => arr.indexOf(elem) === index);
+      res.render("all-pet-owners.hbs", { owners,cities, petType });
       
     })
     .catch(()=>{
@@ -23,20 +31,35 @@ router.get("/allpetowners", (req,res)=> {
   
 });
 // route from allowners page to search and filtered owners page
-
-router.get("/allfilteredowners", (req, res, next)=> {
+router.get("/filteredowners", (req, res, next)=> {  
   res.render("filtered-pet-owners.hbs");
+});
+
+router.post("/filteredowners", (req,res,next) =>{
+    const { ownerPet, ownerCity } = req.body;
+    console.log(req.body)
+    let obj = {}
+    if(ownerPet){
+      obj.ownerPet = ownerPet
+    }
+    if(ownerCity){
+      obj.city = ownerCity;
+    }
+    ownerModel.find(obj)
+      .then((result)=>{
+        console.log(result)
+        res.render("filtered-pet-owners.hbs", { result });
+      })
+      .catch((err)=>{
+          console.log("sth is wrong", err);
+      })
 });
 //how to make a search button on all pet owners page send use to filtered owners page? 
 
+router.get("/ownerdetails", (req, res, next) => {
 
-
-
-
-// router.get("/allpetlovers", (req, res, next) => {
-//   res.render("all-pet-lovers.hbs");
-// });
-
+  res.render("details/owner-details.hbs");
+});
 
 
 module.exports = router;

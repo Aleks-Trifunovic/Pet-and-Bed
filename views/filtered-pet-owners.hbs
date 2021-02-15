@@ -1,3 +1,11 @@
 <h1>Here are your matches</h1>
 
 <a href="/allpetowners">Edit your search</a>
+
+{{#each result}}
+  <a href="/allpetowners/{{ this._id }}"></a>
+      <div>{{this.name}} & {{this.ownerPet}} </div>  
+      <div>{{this.city}}</div>
+      <br>
+      
+ {{/each}} 

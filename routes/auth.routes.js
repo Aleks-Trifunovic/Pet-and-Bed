@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 
-//importing guest an owner models
+//importing guest and owner models
 const guestModel = require("../models/guest.model.js");
 const ownerModel = require("../models/owners.models.js");
 
@@ -11,18 +11,31 @@ router.get("/guestSignUp", (req, res, next) => {
 });
 
 router.post("/guestSignUp", (req, res, next) => {
-  const {guestName,guestEmail,guestAddress,guestCity,guestCountry,guestPassword,guestPet,ownerPetName,aboutMe} = req.body;
-  let myNewGuest = {
-    name: guestName,
-    email: guestEmail,
-    city: guestCity,
-    address: guestAddress,
-    country: guestCountry,
-    password: guestPassword,
-    guestPet: guestPet,
-    petName: ownerPetName,
-    aboutMe: aboutMe,
-  };
+  const {
+    guestName,
+    guestEmail,
+    guestAddress,
+    guestCity,
+    guestCountry,
+    guestPassword,
+    guestPet,
+    ownerPetName,
+    aboutMe,
+  } = req.body;
+    let salt = bcrypt.genSaltSync(10);
+    let hash = bcrypt.hashSync(guestPassword, salt);
+    console.log(hash)
+  // let myNewGuest = {
+  //   name: guestName,
+  //   email: guestEmail,
+  //   city: guestCity,
+  //   address: guestAddress,
+  //   country: guestCountry,
+  //   password: guestPassword,
+  //   guestPet: guestPet,
+  //   petName: ownerPetName,
+  //   aboutMe: aboutMe,
+  // };
 
   // Validating
   // if (!username.length || !email.length || !password.length) {
@@ -43,12 +56,23 @@ router.post("/guestSignUp", (req, res, next) => {
   // }
 
   // this block of code sends our guest data to mongoDB
-  guestModel.create(myNewGuest)
+    console.log(req.body)
+  guestModel
+    .create({
+      name: guestName,
+      email: guestEmail,
+      address: guestAddress,
+      city: guestCity,
+      country: guestCountry,
+      password: hash,
+      guestPet: guestPet,
+      aboutMe: aboutMe,
+    })
     .then(() => {
       res.redirect("/logIn");
     })
-    .catch(() => {
-      console.log("something went wrong creating");
+    .catch((err) => {
+      console.log("something went wrong creating", err);
     });
 });
 
@@ -88,12 +112,11 @@ router.get("/logIn", (req, res, next) => {
 
 router.post("/logIn", (req, res, next) => {
   const { logInName, logInEmail, guestPassword } = req.body;
-  res.redirect("/");
-  console.log(req.body);
-  // if (!logInName.length || !logInEmail.length) {
-  //   res.render("authorisation/login.hbs", { msg: "Please enter all fields" });
-  //   return;
-  // }
+  console.log(req.body)
+  if (!logInName.length || !logInEmail.length || !guestPassword) {
+    res.render("authorisation/login.hbs", { msg: "Please enter all fields" });
+    return;
+  }
   //email validation
   // let re = /\S+@\S+\.\S+/;
   // if (!re.test(logInEmail)) {
