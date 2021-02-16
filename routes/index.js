@@ -104,21 +104,19 @@ router.get("/guestProfile", (req, res) => {
 
 //edit guest
 router.get("/:id/guestEdit", (req,res) => {
-    let userData = req.session.userData
-
     let id = req.params.id
     // get all the todo info to show on the edit form
-    guestModel.findById(userData)
+    guestModel.findById(id)
         .then((guest) => {
-            res.render("guest-edit.hbs", {guest})
+            res.render("profiles/guest-edit.hbs", {userData: guest})
         })
         .catch(() => {
             console.log("Edit fetch failed!")
         })
 })
 
-
-router.get("/:id/guestEdit", (req,res) => {
+// this needs to run when the user submits the edit form
+router.post("/:id/guestEdit", (req,res) => {
   let userData = req.session.userData
   let id = req.params.id
   const {guestName,guestEmail,guestAddress,guestCity,guestCountry,guestPassword,guestPet,aboutMe} = req.body;
@@ -133,7 +131,7 @@ router.get("/:id/guestEdit", (req,res) => {
     aboutMe: aboutMe,
   };
 
-  guestModel.findByIdAndUpdate(updatedGuest)
+  guestModel.findByIdAndUpdate(id,updatedGuest)
   //then -> redirect the user
     .then(()=> {
       res.redirect("/")
@@ -147,14 +145,20 @@ router.get("/:id/guestEdit", (req,res) => {
 
 
 
-router.post("/guestEdit", (req,res) => {
 
+
+//delete
+router.get("/:id/guestDelete", (req,res) =>{
+    let id = req.params.id;
+    guestModel.findByIdAndDelete(id)
+  //then -> redirect the user
+    .then(()=> {
+      res.redirect("/")
+    })
+    .catch(()=> {
+      console.log("Delete failed")
+    })
 })
-
-
-
-
-
 
 
 
