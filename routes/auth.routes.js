@@ -129,10 +129,19 @@ router.post("/logIn", (req, res, next) => {
   //    res.render('auth/signup', {msg: 'Password needs to have special characters, some numbers and be 6 characters atleast'})
   //    return;
   // }
-  //   let salt = bcrypt.genSaltSync(10);
-  //   let hash = bcrypt.hashSync(password, salt);
-  //   UserModel.create({ username, email, password: hash });
+  let salt = bcrypt.genSaltSync(10);
+  let hash = bcrypt.hashSync(password, salt);
+  UserModel.create({email, password: hash})
+     .then(() => {
+         res.redirect('/')
+     })
+     .catch((err) => {
+         next(err)
+     })
 });
+
+
+
 
 
 //we are getting an error with the password when we try to login. 
