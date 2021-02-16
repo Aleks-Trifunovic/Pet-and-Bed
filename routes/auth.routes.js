@@ -88,23 +88,22 @@ router.get("/logInGuest", (req, res, next) => {
 router.post("/logInGuest", (req, res, next) => {
   const { logInEmail, logInPassword } = req.body;
   console.log(req.body);
-  // if (!logInEmail || !logInPassword) {
-  //   res.render("authorisation/log-in-guest.hbs", { msg: "Please enter all fields" });
-  //   return;
-  // }
-  // // email validation
-  // let re = /\S+@\S+\.\S+/;
-  // if (!re.test(logInEmail)) {
-  //   res.render("authorisation/log-in-guest.hbs", { msg: "Email not in valid format" });
-  //   return;
-  // }
-  // // PASWORD VALIDATION
-  // let regexPass = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z!#$%&? "])[a-zA-Z0-9!#$%&?]{8,20}$/;
-  // if (!regexPass.test(logInPassword)) {
-  //   res.render("authorisation/log-in-guest.hbs", { msg: "Password incorrect" });
-  // }
-  guestModel
-    .findOne({ email: logInEmail })
+  if (!logInEmail || !logInPassword) {
+    res.render("authorisation/log-in-guest.hbs", { msg: "Please enter all fields" });
+    return;
+  }
+  // email validation
+  let re = /\S+@\S+\.\S+/;
+  if (!re.test(logInEmail)) {
+    res.render("authorisation/log-in-guest.hbs", { msg: "Email not in valid format" });
+    return;
+  }
+  // PASWORD VALIDATION
+  let regexPass = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z!#$%&? "])[a-zA-Z0-9!#$%&?]{8,20}$/;
+  if (!regexPass.test(logInPassword)) {
+    res.render("authorisation/log-in-guest.hbs", { msg: "Password incorrect" });
+  }
+  guestModel.findOne({ email: logInEmail })
     .then((result) => {
       // if user exists
       if (result) {
@@ -172,8 +171,6 @@ router.post("/logInOwner", (req, res, next) => {
   }
 
   // handle post requests when the user submits something in the sign in form
-  router.post("/logInOwner", (req, res, next) => {
-    const { logInEmail, logInPassword } = req.body;
     // implement the same set of validations as you did in signup as well
     // NOTE: We have used the Async method here. Its just to show how it works
     ownerModel.findOne({ email: logInEmail })
@@ -181,10 +178,10 @@ router.post("/logInOwner", (req, res, next) => {
         // if user exists
         if (result) {
           //check if the entered password matches with that in the DB
-          bcrypt.compare(logInPassword, result.logInPassword).then((isMatching) => {
+          bcrypt.compare(logInPassword, result.password).then((isMatching) => {
             if (isMatching) {
               // when the user successfully signs up
-              // req.session.ownerData = result;
+              req.session.userData = result;
               // req.session.areyoutired = false;
               res.redirect("/ownerProfile");
             } else {
@@ -205,7 +202,7 @@ router.post("/logInOwner", (req, res, next) => {
         next(err);
       });
   });
-});
+
 
 module.exports = router;
 
