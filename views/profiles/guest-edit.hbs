@@ -1,0 +1,78 @@
+<h1>{{userData.name}} edit your data here:</h1>
+
+{{!-- <form method=“POST” action=“/todos/{{todo._id}}/edit”>
+  <div class=“mb-3”>
+    <label for=“exampleInputEmail1" class=“form-label”>Name</label>
+    <input value=“{{todo.name}}”  name=“myTodo” type=“text” class=“form-control” id=“exampleInputEmail1">
+  </div>
+  <div class=“mb-3”>
+    <label for=“exampleInputDescription1" class=“form-label”>Description</label>
+    <input value=“{{todo.description}}” name=“myDescription” type=“text” class=“form-control” id=“exampleInputDescription1">
+  </div>
+  <button type=“submit” class=“btn btn-primary”>Edit</button>
+</form> --}}
+
+<form method="POST" action="/guestEdit/{{userData._id}}">
+  <div class="guestForm"><img src="" alt=""></div>
+  
+  <div class="guest-form">
+    <label for="example-name" class="form-label">Name</label>
+    <input value="{{userData.name}}" name="guestName" type="text" class="form-control" id="example-name">
+
+    <label for="example-input-email" class="form-label">Email</label>
+    <input value="{{userData.email}}" name="guestEmail" type="Email" class="form-control" id="example-email">
+  
+  </div>
+
+  <div class="guest-form">
+    <label for="example-street" class="form-label">Address</label>
+    <input value="{{userData.address}}" name="guestAddress" type="text" class="form-control" id="example-address">
+    
+  <div class="form-check guest-form">
+    <input value="Amsterdam" class="form-check-input" type="radio" name="guestCity" id="flexRadioDefault1">
+    <label class="formCheckLabel" for="Amsterdam" >Amsterdam</label>
+  </div>
+  <div class="form-check guest-form"> 
+    <input value="Berlin" class="form-check-input"  type="radio" name="guestCity" id="flexRadioDefault2">
+    <label class="formCheckLabel" for="Berlin">
+      Berlin
+    </label>
+  </div>
+<br>
+  <div>
+    <div class="form-check guest-form">
+      <input value="Netherlands" class="form-check-input" type="radio" name="guestCountry" id="flexRadioDefault1">
+      <label class="formCheckLabel" for="Netherlands">
+        Netherlands
+      </label>
+    </div>
+    <div class="form-check guest-form">
+      <input value="Germany" class="form-check-input"  type="radio" name="guestCountry" id="flexRadioDefault2">
+      <label class="formCheckLabel" for="Germany">
+        Germany
+      </label>
+    </div>
+  </div>
+  <div>
+    <label for="example-password" class="form-label">Password</label>
+    <input value="{{userData.password}}" name="guestPassword" type="password" class="form-control" id="example-password">
+  </div>
+    <div class="form-check guest-form">
+    <input value="cat" class="form-check-input" type="radio" name="guestPet" id="flexRadioDefault1">
+    <label class="formCheckLabel" for="cat" >Cat</label>
+  </div>
+    <div class="form-check guest-form">
+    <input value="dog" class="form-check-input" type="radio" name="guestPet" id="flexRadioDefault1">
+    <label class="formCheckLabel" for="dog">Dog</label>
+  </div>
+  </div>
+    <div class="form-check guest-form">
+    <input value="both" class="form-check-input" type="radio" name="guestPet" id="flexRadioDefault1">
+    <label class="formCheckLabel" for="both">Both</label>
+  </div>
+  <div class="guest-form">
+    <label for="example-name" class="form-label">About me</label>
+    <input value="{{userData.aboutMe}}" name="aboutMe" type="text" class="form-control" id="example-name"></div>
+<br>
+  <button type="submit" class="btn btn-primary">Edit</button>
+</form>

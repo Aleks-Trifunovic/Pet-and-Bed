@@ -85,13 +85,76 @@ router.get("/allguests", (req, res) => {
 });
 
 router.get("/ownerProfile", (req,res) => {
-  res.render("profiles/owner-profile.hbs")
+  let userData = req.session.userData;
+  res.render("profiles/owner-profile.hbs", { userData });
 });
+
+router.get("/ownerEdit", (req,res) => {
+  let userData = req.session.userData
+  res.render("profiles/owner-edit.hbs", { userData });
+})
 
 router.get("/guestProfile", (req, res) => {
   let userData = req.session.userData
   res.render("profiles/guest-profile.hbs", { userData });
 });
+
+
+
+
+//edit guest
+router.get("/:id/guestEdit", (req,res) => {
+    let userData = req.session.userData
+
+    let id = req.params.id
+    // get all the todo info to show on the edit form
+    guestModel.findById(userData)
+        .then((guest) => {
+            res.render("guest-edit.hbs", {guest})
+        })
+        .catch(() => {
+            console.log("Edit fetch failed!")
+        })
+})
+
+
+router.get("/:id/guestEdit", (req,res) => {
+  let userData = req.session.userData
+  let id = req.params.id
+  const {guestName,guestEmail,guestAddress,guestCity,guestCountry,guestPassword,guestPet,aboutMe} = req.body;
+  let updatedGuest = {
+    name: guestName,
+    email: guestEmail,
+    address: guestAddress,
+    city: guestCity,
+    country: guestCountry,
+    password: guestPassword,
+    guestPet: guestPet,
+    aboutMe: aboutMe,
+  };
+
+  guestModel.findByIdAndUpdate(updatedGuest)
+  //then -> redirect the user
+    .then(()=> {
+      res.redirect("/")
+    })
+    .catch(()=> {
+      console.log("Edit failed")
+    })
+  res.render("profiles/guest-edit.hbs", {userData});
+})
+
+
+
+
+router.post("/guestEdit", (req,res) => {
+
+})
+
+
+
+
+
 
 
 
