@@ -89,7 +89,8 @@ router.get("/ownerProfile", (req,res) => {
 });
 
 router.get("/guestProfile", (req, res) => {
-  res.render("profiles/guest-profile.hbs");
+  let userData = req.session.userData
+  res.render("profiles/guest-profile.hbs", { userData });
 });
 
 

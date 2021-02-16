@@ -88,59 +88,59 @@ router.get("/logInGuest", (req, res, next) => {
 router.post("/logInGuest", (req, res, next) => {
   const { logInEmail, logInPassword } = req.body;
   console.log(req.body);
-  if (!logInEmail || !logInPassword) {
-    res.render("authorisation/log-in-guest.hbs", { msg: "Please enter all fields" });
-    return;
-  }
-  // email validation
-  let re = /\S+@\S+\.\S+/;
-  if (!re.test(logInEmail)) {
-    res.render("authorisation/log-in-guest.hbs", { msg: "Email not in valid format" });
-    return;
-  }
-  // PASWORD VALIDATION
-  let regexPass = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z!#$%&? "])[a-zA-Z0-9!#$%&?]{8,20}$/;
-  if (!regexPass.test(logInPassword)) {
-    res.render("authorisation/log-in-guest.hbs", { msg: "Password incorrect" });
-  }
-
+  // if (!logInEmail || !logInPassword) {
+  //   res.render("authorisation/log-in-guest.hbs", { msg: "Please enter all fields" });
+  //   return;
+  // }
+  // // email validation
+  // let re = /\S+@\S+\.\S+/;
+  // if (!re.test(logInEmail)) {
+  //   res.render("authorisation/log-in-guest.hbs", { msg: "Email not in valid format" });
+  //   return;
+  // }
+  // // PASWORD VALIDATION
+  // let regexPass = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z!#$%&? "])[a-zA-Z0-9!#$%&?]{8,20}$/;
+  // if (!regexPass.test(logInPassword)) {
+  //   res.render("authorisation/log-in-guest.hbs", { msg: "Password incorrect" });
+  // }
+  guestModel
+    .findOne({ email: logInEmail })
+    .then((result) => {
+      // if user exists
+      if (result) {
+        //check if the entered password matches with that in the DB
+        bcrypt.compare(logInPassword, result.password) .then((isMatching) => {
+          if (isMatching) {
+            // when the user successfully signs up
+            req.session.userData = result;
+            //req.session.areyoutired = false;
+            res.redirect("/guestProfile");
+          } else {
+            // when passwords don’t match
+            res.render("authorisation/log-in-guest.hbs", {
+              msg: "Passwords dont match",
+            });
+          }
+        });
+      } else {
+        // when the user signs in with an email that does not exits
+        res.render("authorisation/log-in-guest.hbs", {
+          msg: "Email does not exist",
+        });
+      }
+    })
+    .catch((err) => {
+      next(err);
+    });
+  });
   // handle post requests when the user submits something in the sign in form
-  router.post("/logInGuest", (req, res, next) => {
-    const { email, password } = req.body;
+  // router.post("/logInGuest", (req, res, next) => {
+  //   const { email, password } = req.body;
     // implement the same set of validations as you did in signup as well
     // NOTE: We have used the Async method here. Its just to show how it works
-    guestModel
-      .findOne({ email: email })
-      .then((result) => {
-        // if user exists
-        if (result) {
-          //check if the entered password matches with that in the DB
-          bcrypt.compare(password, result.password).then((isMatching) => {
-            if (isMatching) {
-              // when the user successfully signs up
-              req.session.userData = result;
-              req.session.areyoutired = false;
-              res.redirect("/guestProfile");
-            } else {
-              // when passwords don’t match
-              res.render("authorisation/log-in-guest.hbs", {
-                msg: "Passwords dont match",
-              });
-            }
-          });
-        } else {
-          // when the user signs in with an email that does not exits
-          res.render("authorisation/log-in-guest.hbs", {
-            msg: "Email does not exist",
-          });
-        }
-      })
-      .catch((err) => {
-        next(err);
-      });
-  });
+    
 
-});
+// });
 // login owner
 router.get("/logInOwner", (req, res, next) => {
   
@@ -208,3 +208,5 @@ router.post("/logInOwner", (req, res, next) => {
 });
 
 module.exports = router;
+
+
