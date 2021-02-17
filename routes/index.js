@@ -89,18 +89,61 @@ router.get("/ownerProfile", (req,res) => {
   res.render("profiles/owner-profile.hbs", { userData });
 });
 
-router.get("/ownerEdit", (req,res) => {
-  let userData = req.session.userData
-  res.render("profiles/owner-edit.hbs", { userData });
+//edit owner
+router.get("/:id/ownerEdit", (req,res) => {
+  let id = req.params.id
+  ownerModel.findById(id)
+    .then((owner) => {
+      res.render("profiles/owner-edit.hbs", {userData: owner})
+  })
+    .catch(() => {
+      console.log("Edit fetch failed!");
+    })
 })
+// this needs to run when the user submits the edit form
+router.post("/:id/ownerEdit", (req,res) => {
+  let userData = req.session.userData
+  let id = req.params.id
+  const {ownerName,ownerEmail,ownerAddress,ownerCity,ownerCountry,ownerPassword,ownerPet,aboutMe} = req.body;
+  let updatedowner = {
+    name: ownerName,
+    email: ownerEmail,
+    address: ownerAddress,
+    city: ownerCity,
+    country: ownerCountry,
+    password: ownerPassword,
+    ownerPet: ownerPet,
+    aboutMe: aboutMe,
+  };
+
+  ownerModel.findByIdAndUpdate(id,updatedowner)
+  //then -> redirect the user
+    .then(()=> {
+      res.redirect("/ownerProfile");
+    })
+    .catch(()=> {
+      console.log("Edit failed")
+    })
+  res.render("profiles/owner-edit.hbs", {userData});
+})
+//delete
+router.get("/:id/ownerDelete", (req,res) =>{
+    let id = req.params.id;
+    ownerModel.findByIdAndDelete(id)
+  //then -> redirect the user
+    .then(()=> {
+      res.redirect("/")
+    })
+    .catch(()=> {
+      console.log("Delete failed")
+    })
+})
+
 
 router.get("/guestProfile", (req, res) => {
   let userData = req.session.userData
   res.render("profiles/guest-profile.hbs", { userData });
 });
-
-
-
 
 //edit guest
 router.get("/:id/guestEdit", (req,res) => {
@@ -134,17 +177,13 @@ router.post("/:id/guestEdit", (req,res) => {
   guestModel.findByIdAndUpdate(id,updatedGuest)
   //then -> redirect the user
     .then(()=> {
-      res.redirect("/")
+      res.redirect("/guestProfile");
     })
     .catch(()=> {
       console.log("Edit failed")
     })
   res.render("profiles/guest-edit.hbs", {userData});
 })
-
-
-
-
 
 
 //delete

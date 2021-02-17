@@ -1,10 +1,9 @@
-
 <h1>Welcome to your profile {{userData.name}}</h1>
 
 <h2>Your User data:</h2>
 <h6>name: {{userData.name}}</h6>
 <h6>email: {{userData.email}}</h6>
-<h6>password: {{userData.password}}</h6>
+{{!-- <h6>password: {{userData.password}}</h6> --}}
 <h6>address: {{userData.address}}</h6>
 <h6>city: {{userData.city}}</h6>
 <h6>country: {{userData.country}}</h6>
@@ -13,4 +12,5 @@
 <h6>about you: {{userData.aboutMe}}</h6>
 
 
- <a href="/ownerEdit"> <button type="button" class="btn btn-outline-secondary">Edit your details</button></a>
+ <a href="/{{userData._id}}/ownerEdit"> <button type="button" class="btn btn-outline-secondary">Edit your details</button></a>
+ <a href="/{{userData._id}}/ownerDelete"> <button type="button" class="btn btn-outline-secondary">Delete your details</button></a>

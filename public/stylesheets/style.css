@@ -1,11 +1,43 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+/* font-family: ‘Raleway’, sans-serif; */
+/* blue color  #1F2257  */
+/* orange color #EB5524 */
+/* peach color #F6B68E */
+/* off white #F6F0E4 */
 
-a {
-  color: #00b7ff; }
+ body {
+  margin: 0px;
+  font-family: 14px "Raleway", sans-serif;
+  background-color: #F6F0E4;
+  color: #1F2257;
+}
+.navigation{
+  display: flex;
+  justify-content: flex-end;
+  border-bottom: groove;
+  
+} 
+.homeButton{
+  margin-top: 12px;
+  width: 30px;
+  height: 30px;
+}
+.guestForm{
+  margin-left: 20px;
+  margin-right: 200px;
+}
+.ownerForm{
+  margin-left: 20px;
+  margin-right: 200px;
+}
 
-h1 {
-  color: 15px; }
+footer{
+  margin: 20px;
+  border-top: groove;
+}
+.wellcomeGuest{
+  margin-left: 20px;
+}
 
-/*# sourceMappingURL=style.css.map */
+.wellcomeOwner{
+  margin-left: 20px;
+}
