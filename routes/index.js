@@ -14,12 +14,12 @@ router.get("/", (req, res, next) => {
 router.get("/allpetowners", (req,res)=> {
   ownerModel.find()
     .then((owners)=> {
+      console.log(owners)
       let cities = owners.map((singleOwner)=>{
           return singleOwner.city
       }).filter((elem, index, arr) => arr.indexOf(elem) === index);
 
-      let petType = owners
-        .map((singleOwner) => {
+      let petType = owners.map((singleOwner) => {
           return singleOwner.ownerPet;
         }).filter((elem, index, arr) => arr.indexOf(elem) === index);
       res.render("all-pet-owners.hbs", { owners,cities, petType });
@@ -55,10 +55,11 @@ router.post("/filteredowners", (req,res,next) =>{
 });
 
 
-// router.get("/ownerdetails", (req, res, next) => { //last page for owners
 
-//   res.render("details/owner-details.hbs");
-// });
+
+router.get("/guestdetails", (req, res, next) => { //last page for owners
+  res.render("details/guest-details.hbs");
+});
 
 
 router.get("/allguests", (req, res) => {
@@ -225,6 +226,33 @@ router.post("/filteredGuests", (req, res, next) => {
     });
 });
 
+//displaying details of a specific owner on details page
+
+router.get("/:id/ownerdetails", (req, res) => {
+  let id = req.params.id;
+
+  ownerModel.findById(id)
+    .then((result) => {
+      res.render("details/owner-details.hbs", { result });
+    })
+    .catch(() => {
+      console.log("failed!");
+    });
+});
+//displaying details of a specific owner on details page
+
+router.get("/:id/guestdetails", (req, res) => {
+  let id = req.params.id;
+
+  guestModel.findById(id)
+    .then((result) => {
+      res.render("details/guest-details.hbs", { result });
+    })
+    .catch(() => {
+      console.log("failed!");
+    });
+});
+
+
+
 module.exports = router;
-
-
