@@ -1,18 +1,21 @@
-<h1>Hi guest</h1>
-<form method="POST" action="/logInGuest">
-<div class="logIn-form">
-    
+<h1 class="greetings">Welcome back pet lover!</h1>
 
-    <label for="example-input-email" class="form-label">Email</label>
-    <input name="logInEmail" type="Email" class="form-control" id="example-email">
-  
+<div class="sign-up-in-container sign-up-in-container-wide">
+
+  <form method="POST" action="/logInGuest">
+    <div class="logIn-form">
+        <label for="example-input-email" class="form-label">Email</label>
+        <input name="logInEmail" type="Email" class="form-control" id="example-email">
+    </div>
+     <div>
+        <label for="example-password" class="form-label">Password</label>
+        <input name="logInPassword" type="password" class="form-control" id="example-password">
+    </div>
+      <button type="submit" class="btn btn-primary blue-btn btn-go-and-find">log in</button>
+  </form>
+
   </div>
-  <div>
-    <label for="example-password" class="form-label">Password</label>
-    <input name="logInPassword" type="password" class="form-control" id="example-password">
-  </div>
-    <button type="submit" class="btn btn-primary">Log in</button>
-</form>
+
 {{#if msg}}
  <div class="error">{{msg}}</div>
 {{/if}}

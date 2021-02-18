@@ -247,8 +247,6 @@ footer > p {
   font-size: 1em;
 }
 
-/* sign uo owner page =============================== */
-
 .greetings {
   font-size: 4em;
   font-weight: 800;
@@ -262,34 +260,24 @@ footer > p {
 }
 
 .sign-up-in-container {
+  /* background-color: teal; */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
   align-content: center;
-  margin-bottom: 350px;
+  margin-bottom: 200px;
 }
 
-.sign-up-container {
-  /* background-color: red; */
-  width: 800px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: stretch;
-  align-content: flex-start;
-  margin: 50px 0px 200px -400px;
-}
 .cat2 {
-  margin-top: 100px;
-  /* justify-content: flex-start; */
+  margin-top: -300px; 
+  margin-right: 100px;
 }
 
 .blue-btn {
   margin-top: 40px;
-  width: 150%;
+  width: 50%;
 }
 
 .form-control {
@@ -307,24 +295,32 @@ footer > p {
 }
 
 .form-label {
+  margin: 15px 0px;
+}
+
+.form-check {
   margin-bottom: 10px;
 }
 
 /* sign in owner page =============================== */
 
-form {
+.sign-up-in-container-wide  form {
+  /* background-color: thistle; */
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: stretch;
   align-content: space-around;
-  margin: 0px 0px -400px;
-  width: 200px;
+  width: 400px;
+  margin-top: 50px;
 }
 
 form > .logIn-form {
   margin: 25px;
+}
+
+.sign-up-in-container-wide > .form-control {
+  width: 300px;
 }
 
 /* all owners page======================================== */
@@ -338,4 +334,21 @@ form > .logIn-form {
 
 .wellcomeOwner {
   margin-left: 20px;
+}
+
+/* error =============================== */
+
+div.error {
+  position: fixed;
+  top: 40px;
+  left: 130px;
+  font-size: 1.3em;
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  color: #f6f0e4;
+  background-color: #EB5524;
+  padding: 5px 50px;
+  border-radius: 25px;
+  
+  
 }
