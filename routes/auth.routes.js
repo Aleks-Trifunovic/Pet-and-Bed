@@ -55,6 +55,32 @@ router.get("/ownerSignUp", (req, res, next) => {
 
 router.post("/ownerSignUp", (req, res, next) => {
   const {ownerName,ownerEmail,ownerAddress,ownerCity,ownerCountry,ownerPassword,ownerPet,aboutMe,ownerPetName } = req.body;
+
+
+  // if (!ownerEmail || !ownerPassword) {
+  //   res.render("authorisation/log-in-owner.hbs", {
+  //     msg: "Please enter all fields",
+  //   });
+  //   return;
+  // }
+  // // email validation
+  // let re = /\S+@\S+\.\S+/;
+  // if (!re.test(ownerEmail)) {
+  //   res.render("authorisation/log-in-owner.hbs", {
+  //     msg: "Email not in valid format",
+  //   });
+  //   return;
+  // }
+  // //PASWORD VALIDATION
+  // let regexPass = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z!#$%&? "])[a-zA-Z0-9!#$%&?]{8,20}$/;
+  // if (!regexPass.test(ownerPassword)) {
+    
+  //   res.render("authorisation/log-in-owner.hbs", { msg: "Password incorrect" });
+    
+  // }
+
+
+
   let salt = bcrypt.genSaltSync(10);
   let hash = bcrypt.hashSync(ownerPassword, salt);
   console.log(hash);
@@ -148,27 +174,27 @@ router.get("/logInOwner", (req, res, next) => {
 router.post("/logInOwner", (req, res, next) => {
   const { logInEmail, logInPassword } = req.body;
   console.log(req.body);
-  if (!logInEmail || !logInPassword) {
-    res.render("authorisation/log-in-owner.hbs", {
-      msg: "Please enter all fields",
-    });
-    return;
-  }
-  // email validation
-  let re = /\S+@\S+\.\S+/;
-  if (!re.test(logInEmail)) {
-    res.render("authorisation/log-in-owner.hbs", {
-      msg: "Email not in valid format",
-    });
-    return;
-  }
-  // PASWORD VALIDATION
-  let regexPass = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z!#$%&? "])[a-zA-Z0-9!#$%&?]{8,20}$/;
-  if (!regexPass.test(logInPassword)) {
+  // if (!logInEmail || !logInPassword) {
+  //   res.render("authorisation/log-in-owner.hbs", {
+  //     msg: "Please enter all fields",
+  //   });
+  //   return;
+  // }
+  // // email validation
+  // let re = /\S+@\S+\.\S+/;
+  // if (!re.test(logInEmail)) {
+  //   res.render("authorisation/log-in-owner.hbs", {
+  //     msg: "Email not in valid format",
+  //   });
+  //   return;
+  // }
+  // //PASWORD VALIDATION
+  // let regexPass = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z!#$%&? "])[a-zA-Z0-9!#$%&?]{8,20}$/;
+  // if (!regexPass.test(logInPassword)) {
     
-    res.render("authorisation/log-in-owner.hbs", { msg: "Password incorrect" });
+  //   res.render("authorisation/log-in-owner.hbs", { msg: "Password incorrect" });
     
-  }
+  // }
 
   // handle post requests when the user submits something in the sign in form
     // implement the same set of validations as you did in signup as well
