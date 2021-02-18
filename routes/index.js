@@ -183,7 +183,7 @@ router.post("/:id/guestEdit", (req,res) => {
     .catch(()=> {
       console.log("Edit failed")
     })
-  res.render("profiles/guest-edit.hbs", {userData});
+  // res.render("profiles/guest-edit.hbs", {userData});
 })
 
 
