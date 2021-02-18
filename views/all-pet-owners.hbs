@@ -1,10 +1,10 @@
 <h1 class="greetingsTwo">Find your perfect match!</h1>
 
+<div class="horizontal-form">
 <form method="POST" action="/filteredowners">
 
 {{#each cities}}
-
-  <div class="form-check guest-form">
+  <div class="form-check guest-form>
     <input value="{{this}}" class="form-check-input" type="radio" name="ownerCity" id="flexRadioDefault1">
     <label class="formCheckLabel" for="{{this}}" >{{this}}</label>
   </div>
@@ -15,19 +15,21 @@
     <input value="{{this}}" class="form-check-input" type="radio" name="ownerPet" id="flexRadioDefault1">
     <label class="formCheckLabel" for="{{this}}" >{{this}}</label>
   </div>
-  {{/each}}
+{{/each}}
 
-  <button type="submit" class="btn btn-primary">Search</button>
+  <button type="submit" class="btn btn-primary">search</button>
   </form>
 
  {{#each owners}}
   <a href="/allpetowners/{{ this._id }}"></a>
       <div>{{this.name}} & {{ownerPetName}} </div>  
       <div>{{this.city}}</div>
-      <a class="nav-link" href="/{{this._id}}/ownerdetails"><button type="button" class="btn btn-outline-secondary">Go to profile</button></a>
+      <a class="nav-link" href="/{{this._id}}/ownerdetails"><button type="button" class="btn btn-outline-secondary">go to profile</button></a>
       <br>
       
  {{/each}} 
+
+ </div>
 
  {{!-- cards bootstrap --}}
 
