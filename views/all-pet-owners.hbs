@@ -1,4 +1,4 @@
-<h1>Find your perfect match!</h1>
+<h1 class="greetingsTwo">Find your perfect match!</h1>
 
 <form method="POST" action="/filteredowners">
 
@@ -22,9 +22,22 @@
 
  {{#each owners}}
   <a href="/allpetowners/{{ this._id }}"></a>
-      <div>{{this.name}} & {{ownerPetName}} </div>  {{!-- why is & sign red and is that gonna give us problems later? --}}
+      <div>{{this.name}} & {{ownerPetName}} </div>  
       <div>{{this.city}}</div>
+      <button type="button" class="btn btn-outline-secondary">Go to profile</button></a>
       <br>
       
  {{/each}} 
+
+ {{!-- cards bootstrap --}}
+
+ {{!-- <div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card with stretched link</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary stretched-link">Go somewhere</a>
+  </div>
+</div> --}}
+
  

@@ -15,6 +15,7 @@ const guestSchema = new mongoose.Schema({
   city: {
     type: String,
     enum: ["Amsterdam", "Berlin"],
+    required: true,
   },
   country: {
     type: String,
@@ -27,6 +28,7 @@ const guestSchema = new mongoose.Schema({
   guestPet: {
     type: String,
     enum: ["cat", "dog", "both"],
+    required: true,
   },
   aboutMe: {
     type: String,

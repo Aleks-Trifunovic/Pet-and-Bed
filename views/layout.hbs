@@ -1,26 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>{{title}}</title>
-      <link rel="stylesheet" href="/stylesheets/style.css" />
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-   </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{title}}</title>
 
-   <body>
-      <nav class="navigation">
-         <a class="nav-link" href="/">Back to home</a>
-         <a class="nav-link" href="/guestSignUp"> <button type="button" class="btn btn-outline-secondary">Guest Signup</button></a>
-         <a class="nav-link" href="/ownerSignUp"><button type="button" class="btn btn-outline-secondary">Owner Signup</button></a>
-         <a class="nav-link" href="/logIn"><button type="button" class="btn btn-outline-secondary">Login</button></a>
-      </nav>
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-      {{{body}}}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" />
 
-      <script src="/js/script.js"></script>
-   </body>
+  
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+
+<body>
+
+  <nav class="container-nav">
+    <a class="home" href="/"><img class="home" src="images/home.png" border="0" alt="home"></a>
+
+    <div class="dropdown">
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false"> pet owner</button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="/ownerSignUp">sign up owner</a>
+          <a class="dropdown-item" href="/logInOwner">log in owner</a>
+        </div>  
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">pet guest</button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="/guestSignUp">sign up guest</a>
+          <a class="dropdown-item" href="/logInGuest">log in guest</a>
+        </div>  
+      <a class="btn btn-outline-secondary btn-log-out" class="nav-link" href="/logOut">log out</a>
+    </div> 
+  </nav>
+
+ 
+<footer>
+  <p>made by Aleksandar & Delia powerd by House Stark</p>
+</footer>
+  
+
+  {{{body}}}
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
 
 </html>
