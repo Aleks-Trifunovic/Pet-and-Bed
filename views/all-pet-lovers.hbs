@@ -22,9 +22,10 @@
 
  {{#each guests}}
   <a href="/allguests/{{ this._id }}"></a>
+      <div><img src="{{this.image}}" alt=""></div>
       <div>{{this.name}}</div>  
       <div>{{this.city}}</div>
-      {{!-- <button type="button" class="btn btn-outline-secondary">Go to profile</button></a> --}}
+      
       <a class="nav-link" href="/{{this._id}}/guestdetails"><button type="button" class="btn btn-outline-secondary">Go to profile</button></a>
       <br>
 {{/each}}

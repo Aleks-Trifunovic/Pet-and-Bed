@@ -1,11 +1,17 @@
 <h1>Get to know your potential host:</h1>
-
-
+      {{!-- If the owner has an image it will display it, if not it won't display nothing --}}
+      {{#if result.image}}
+      <div><img src="{{result.image}}" alt="Owner_photo"></div>
+      {{/if}}
       <div>{{result.name}} and {{result.ownerPetName}} </div>  
       <div>{{result.city}}</div>
       <div>{{result.email}}</div>
       <div>{{result.aboutMe}}</div>
       <br>
 
+
+{{!-- {{#if userData}}
+<a href="/Profile">Profile</a>
+{{/if}} --}}
 
  

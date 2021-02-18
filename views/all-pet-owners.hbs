@@ -22,22 +22,11 @@
 
  {{#each owners}}
   <a href="/allpetowners/{{ this._id }}"></a>
+      <div><img src="{{this.image}}" alt=""></div>
       <div>{{this.name}} & {{ownerPetName}} </div>  
       <div>{{this.city}}</div>
+      
       <a class="nav-link" href="/{{this._id}}/ownerdetails"><button type="button" class="btn btn-outline-secondary">Go to profile</button></a>
       <br>
       
  {{/each}} 
-
- {{!-- cards bootstrap --}}
-
- {{!-- <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card with stretched link</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary stretched-link">Go somewhere</a>
-  </div>
-</div> --}}
-
- 

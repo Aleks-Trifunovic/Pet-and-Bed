@@ -39,7 +39,8 @@ const ownerSchema = new mongoose.Schema({
   },
   image: {
     type: String,
-    default: "",
+    default:
+      "https://res.cloudinary.com/dscky1zmi/image/upload/v1613649672/agoue0yok7w26iridydi.jpg",
   },
 });
 
