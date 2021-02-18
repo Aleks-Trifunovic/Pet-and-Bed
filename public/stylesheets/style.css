@@ -15,7 +15,8 @@
        CSS for Desktops
   } */
 
-  @import btn-outline-secondary;
+  /* @import all-pet-lovers.hbs;
+  @import all-pet-owners.hbs; */
 
 body {
   margin: 0px;
