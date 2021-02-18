@@ -22,6 +22,7 @@
 
  {{#each owners}}
   <a href="/allpetowners/{{ this._id }}"></a>
+      <div><img src="{{this.image}}" alt=""></div>
       <div>{{this.name}} & {{ownerPetName}} </div>  
       <div>{{this.city}}</div>
       <a class="nav-link" href="/{{this._id}}/ownerdetails"><button type="button" class="btn btn-outline-secondary">go to profile</button></a>
