@@ -1,32 +1,28 @@
 <h1 class="greetingsTwo">Find your perfect match!</h1>
-
-<form class="allFormOwners" method="POST" action="/filteredowners">
-
+<div class="horizontal-form">
+<form method="POST" action="/filteredowners">
 {{#each cities}}
-
   <div class="form-check guest-form">
     <input value="{{this}}" class="form-check-input" type="radio" name="ownerCity" id="flexRadioDefault1">
     <label class="formCheckLabel" for="{{this}}" >{{this}}</label>
   </div>
 {{/each}}
-
 {{#each petType}}
   <div class="form-check guest-form">
     <input value="{{this}}" class="form-check-input" type="radio" name="ownerPet" id="flexRadioDefault1">
-    <label class="formCheckLabel" for="{{this}}" >{{this}}</label>
+    <label class="formCheckLabel" for="{{this}}">{{this}}</label>
   </div>
-  {{/each}}
-
-  <button type="submit" class="btn btn-primary">Search</button>
+{{/each}}
+  <button type="submit" class="btn btn-primary btn-go-and-find">search</button>
   </form>
-
  {{#each owners}}
-  <a href="/allpetowners/{{ this._id }}"></a>
+  <div class="found-match">
+    <a href="/allpetowners/{{ this._id }}"></a>
       <div><img src="{{this.image}}" alt=""></div>
-      <div>{{this.name}} & {{ownerPetName}} </div>  
-      <div>{{this.city}}</div>
-      
-      <a class="nav-link" href="/{{this._id}}/ownerdetails"><button type="button" class="btn btn-outline-secondary">Go to profile</button></a>
+      <div class="names">{{this.name}} & {{ownerPetName}} </div>
+      <div class="city">{{this.city}}</div>
+      <a class="nav-link" href="/{{this._id}}/ownerdetails"><button type="button" class="btn btn-outline-secondary mach-found">go to profile</button></a>
       <br>
-      
- {{/each}} 
+  </div>
+ {{/each}}
+ </div>
