@@ -1,74 +1,88 @@
-<h1>{{userData.name}} edit your data here:</h1>
+<header>
+  <h1 class="greetings">{{userData.name}}, edit your profile here!</h1>
+</header>
 
-<form method="POST" action="/{{userData._id}}/guestEdit">
- 
-{{!-- 
+
+<div class="sign-up-in-container edit-container">
   <div class="guest-form">
-    <label for="example-image" class="form-label">Image</label>
-    <input name="imageUrl" type="file" class="form-control" value= id="example-image">
-  </div> --}}
-  
-  <div class="guest-form">
+    <form method="POST" action="/{{userData._id}}/guestEdit">
+    <div class="guest-form">
+      
     <label for="example-name" class="form-label">Name</label>
     <input value="{{userData.name}}" name="guestName" type="text" class="form-control" id="example-name">
-
     <label for="example-input-email" class="form-label">Email</label>
     <input value="{{userData.email}}" name="guestEmail" type="Email" class="form-control" id="example-email">
-  
-  </div>
 
-  <div class="guest-form">
     <label for="example-street" class="form-label">Address</label>
     <input value="{{userData.address}}" name="guestAddress" type="text" class="form-control" id="example-address">
-    
+
+   <br>
+
   <div class="form-check guest-form">
     <input value="Amsterdam" class="form-check-input" type="radio" name="guestCity" id="flexRadioDefault1">
     <label class="formCheckLabel" for="Amsterdam" >Amsterdam</label>
   </div>
   <div class="form-check guest-form"> 
     <input value="Berlin" class="form-check-input"  type="radio" name="guestCity" id="flexRadioDefault2">
-    <label class="formCheckLabel" for="Berlin">
-      Berlin
-    </label>
+    <label class="formCheckLabel" for="Berlin"> Berlin</label>
   </div>
+
 <br>
+
   <div>
     <div class="form-check guest-form">
       <input value="Netherlands" class="form-check-input" type="radio" name="guestCountry" id="flexRadioDefault1">
-      <label class="formCheckLabel" for="Netherlands">
-        Netherlands
-      </label>
+      <label class="formCheckLabel" for="Netherlands">Netherlands</label>
     </div>
     <div class="form-check guest-form">
       <input value="Germany" class="form-check-input"  type="radio" name="guestCountry" id="flexRadioDefault2">
-      <label class="formCheckLabel" for="Germany">
-        Germany
-      </label>
+      <label class="formCheckLabel" for="Germany">Germany</label>
     </div>
   </div>
+
+  <br>
   
     <div class="form-check guest-form">
-    <input value="cat" class="form-check-input" type="radio" name="guestPet" id="flexRadioDefault1">
-    <label class="formCheckLabel" for="cat" >Cat</label>
-  </div>
+      <input value="cat" class="form-check-input" type="radio" name="guestPet" id="flexRadioDefault1">
+      <label class="formCheckLabel" for="cat" >Cat</label>
+    </div>
     <div class="form-check guest-form">
-    <input value="dog" class="form-check-input" type="radio" name="guestPet" id="flexRadioDefault1">
-    <label class="formCheckLabel" for="dog">Dog</label>
-  </div>
-  </div>
+      <input value="dog" class="form-check-input" type="radio" name="guestPet" id="flexRadioDefault1">
+      <label class="formCheckLabel" for="dog">Dog</label>
+    </div>
     <div class="form-check guest-form">
-    <input value="both" class="form-check-input" type="radio" name="guestPet" id="flexRadioDefault1">
-    <label class="formCheckLabel" for="both">Both</label>
-  </div>
+      <input value="both" class="form-check-input" type="radio" name="guestPet" id="flexRadioDefault1">
+      <label class="formCheckLabel" for="both">Both</label>
+    </div>
+
+    <br>
+
   <div class="guest-form">
     <label for="example-name" class="form-label">About me</label>
+  
     <input value="{{userData.aboutMe}}" name="aboutMe" type="text" class="form-control" id="example-name"></div>
-<br>
-  <button type="submit" class="btn btn-primary">Edit</button>
+
+  <button type="submit" class="btn btn-primary blue-btn btn-go-and-find blue-btn">edit</button>
 </form>
 
-<h2>Upload your image here</h2>
+
+
+</div>
+</div>
+
+<div class="upload">
+  <h2>Upload your image here</h2>
+
 <form method="POST" action="/uploadGuest" enctype="multipart/form-data">
     <input type="file" name="imageUrl" accept="image/png, image/jpg" value= {{userData.image}}>
-    <button type="submit">Submit</button> 
+    <button type="submit" class="btn btn-primary blue-btn btn-go-and-find blue-btn">submit</button> 
 </form>  
+
+
+<div class="guest-form">
+    <label for="example-image" class="form-label">image</label>
+    <input name="imageUrl" type="file" class="form-control" value= id="example-image">
+  </div>
+
+</div>
+

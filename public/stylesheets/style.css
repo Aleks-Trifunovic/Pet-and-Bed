@@ -76,8 +76,9 @@ p {
 }
 
 .dropdown-toggle {
+  box-shadow:  rgba(0, 0, 0, 0) !important;
   margin-right: 30px;
-  border: 2px solid #1f2257;
+  border: 3px solid #1f2257;
   color: #1f2257;
   background-color: #f6f0e4;
   border-radius: 25px;
@@ -89,11 +90,10 @@ p {
   color: #f6f0e4;
   background-color: #1f2257;
   border-radius: 25px;
-  /* display: inline; */
 }
 
 .btn-log-out {
-  border: 2px solid #1f2257;
+  border: 3px solid #1f2257;
   color: #1f2257;
   background-color: #f6f0e4;
   border-radius: 25px;
@@ -240,7 +240,7 @@ footer {
   align-content: flex-end;
   border-top: 3px solid #1f2257;
   margin: 0px 200px 0px 80px;
-  z-index: 0;
+  z-index: 10 !important;
 }
 
 footer > p {
@@ -262,29 +262,52 @@ footer > p {
   align-content: stretch;
 }
 
+.owner-form {
+  /* background-color: darkgoldenrod; */
+  width: 25%;
+}
+
 .sign-up-in-container {
   /* background-color: teal; */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   align-content: center;
   margin-bottom: 200px;
 }
 
+.owner-form > label {
+ font-weight: normal;
+ font-size: 1.5em;
+}
+
+.owner-form > .label {
+  font-weight: normal;
+  font-size: 1.5em;
+ }
+
+ .form-label {
+  margin: 15px 0px;
+  font-weight: normal;
+  font-size: 1.5em;
+}
+
+
 .cat2 {
-  margin-top: -300px; 
-  margin-right: 100px;
+  margin-top: -450px; 
+  /* margin-right: 50px; */
+  padding: 100px;
 }
 
 .blue-btn {
   margin-top: 40px;
-  width: 50%;
+  width: 100%;
 }
 
 .form-control {
-  border: 2px solid #1f2257;
+  border: 3px solid #1f2257;
   border-radius: 25px;
   background-color: rgba(0, 0, 0, 0) !important;
   /* border-bottom: 2px solid #1F2257 !important; */
@@ -292,13 +315,8 @@ footer > p {
 
 #flexRadioDefault1,
 #flexRadioDefault2 {
-  border: 2px solid #1f2257;
-  background-color: rgba(0, 0, 0, 0) !important;
+  border: 3px solid #1f2257;
   color: #1f2257 !important;
-}
-
-.form-label {
-  margin: 15px 0px;
 }
 
 .form-check {
@@ -340,6 +358,46 @@ form > .logIn-form {
 }
 
 
+.formCheckLabel,
+.formCheckInput {
+  font-size: 1.5em;
+  font-weight: normal;
+  color: #1f2257;
+}
+
+/* filtered serch btn ================================  */
+.horizontal-form {
+  position: absolute;
+  flex-direction: column;
+  justify-content: center;
+  margin: 30px;
+  top: 150px;
+  right: -40px;
+  /* background-color: palegreen; */
+}
+
+.new-btn {
+  padding: -15px 10px 40px 0px; 
+  margin-top: -15px;
+  margin-bottom: 40px;
+  width: 200px;
+}
+
+.radio-btn-container {
+  width: 900px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  /* background-color: darkmagenta; */ 
+}
+
+.pet-choice,
+.city-choice {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width: 300px; 
+} 
 
 /* error =============================== */
 
@@ -356,10 +414,139 @@ div.error {
   border-radius: 25px; 
 }
 
-.horizontal-form {
+.one {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
+  padding: 10px 40px 50px;
+}
+
+.card {
+  border: rgba(0, 0, 0, 0) !important;
+  /* border: 2px solid #1f2257; */
+  /* background-color: rgba(0, 0, 0, 0) !important; */
+  background-color: #f6f0e4;
+  margin: 0px 30px;
+  /* background-color: magenta; */
+  height: 400px;
+}
+
+.card-btn {
+  border: 2px solid #1f2257;
+  color: #1f2257;
+  background-color:  rgba(0, 0, 0, 0) !important;
+  border-radius: 25px;
+  padding: 7px 25px;
+  margin: 10px 0px 10px;  
+}
+
+.card-btn:hover  {
+  border: none;
+  color: #f6f0e4;
+  background-color: #1f2257 !important;
+  border-radius: 25px;
+  padding: 10px 40px;
+}
+
+.card-text {
+  font-weight: 700;
+  font-size: 1.5em;
+}
+
+.card-title {
+  margin-top: 30px;
+  font-weight: normal;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  
-  width: 300px;
+  margin: 70px 70px 20px;
+}
+
+.new-btn {
+  width: 200px;
+  color: #f6f0e4;
+  background-color: #1f2257;
+  border-radius: 25px;
+  padding: 13px 40px;
+}
+
+.new-btn:hover {
+  width: 200px;
+  color: #1f2257;
+  background-color:  rgba(0, 0, 0, 0) !important;
+  border: 2px solid #1f2257;
+  border-radius: 25px;
+}
+
+/* profile page =======================*/
+
+.btn-section {
+  /* background-color: lightseagreen; */
+  display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	align-content: center;
+  padding-top: 70px;
+  padding-bottom: 20px;;
+}
+
+.btn-profile {
+  border: none;
+  color: #f6f0e4;
+  background-color: #1f2257;
+  border-radius: 25px;
+  width: 130%;
+  margin: 5px;
+}
+
+.btn-profile:hover {
+  border: 2px solid #1f2257;
+  color: #1f2257;
+  background-color: #f6f0e4;
+  border-radius: 25px;
+  /* background-color: rgba(0, 0, 0, 0) !important; */
+}
+
+.box {
+  display: flex;
+	flex-direction: column;
+  justify-content: center;
+	flex-wrap: wrap;
+  /* margin: 30px; */
+  background-color: #f6f0e4;
+}
+
+.col-md-4 {
+  padding-top: 50px;
+}
+
+/* edit guest page */
+
+.upload {
+  display: flex;
+	flex-direction: column;
+  justify-content: center;
+  padding: 200px;
+}
+
+.edit-container  {
+  /* padding-top: 80px; */
+  padding: 80px;
+  margin: 50px;
+  /* background-color: magenta; */
+}
+
+.two {
+  position: relative;
+  top: 100px;
+  left: 600px;
+}
+
+.profile {
+  margin: 10px 30px;
 }

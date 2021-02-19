@@ -1,48 +1,52 @@
+
 <h1 class="greetingsTwo">Find your perfect match!</h1>
+<section class="window"></section>
 
-<div class="horizontal-form">
-<form method="POST" action="/filteredowners">
+  {{!-- horizontal serch nav --}}
+  <div class="horizontal-form">
+    <form method="POST" action="/filteredowners">
+    <button type="submit" class="btn btn-primary btn-go-and-find new-btn">search</button>
 
-{{#each cities}}
-  <div class="form-check guest-form>
-    <input value="{{this}}" class="form-check-input" type="radio" name="ownerCity" id="flexRadioDefault1">
-    <label class="formCheckLabel" for="{{this}}" >{{this}}</label>
-  </div>
-{{/each}}
-
-{{#each petType}}
-  <div class="form-check guest-form">
-    <input value="{{this}}" class="form-check-input" type="radio" name="ownerPet" id="flexRadioDefault1">
-    <label class="formCheckLabel" for="{{this}}" >{{this}}</label>
-  </div>
-{{/each}}
-
-  <button type="submit" class="btn btn-primary">search</button>
-  </form>
-
- {{#each owners}}
-  <div>
-    <a href="/allpetowners/{{ this._id }}"></a>
-      <div><img src="{{this.image}}" alt=""></div>
-      <div class="petName">{{this.name}} & {{ownerPetName}} </div>  
-      <div class="petCity">{{this.city}}</div>
-      <a class="nav-link" href="/{{this._id}}/ownerdetails"><button type="button" class="btn btn-outline-secondary">go to profile</button></a>
-      <br>
-  </div>
+      {{#each cities}}
+        <div class="form-check guest-form city-choice">
+              <input value="{{this}}" class="form-check-input" type="radio" name="ownerCity" id="flexRadioDefault1">
+              <label class="formCheckLabel" for="{{this}}">{{this}}</label>  
+        </div>   
+      {{/each}}
       
- {{/each}} 
-
- </div>
-
- {{!-- cards bootstrap --}}
-
- {{!-- <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card with stretched link</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary stretched-link">Go somewhere</a>
+      <div class="pet-choice">
+        {{#each petType}}
+          <div class="form-check guest-form">
+            <input value="{{this}}" class="form-check-input" type="radio" name="ownerPet" id="flexRadioDefault1">
+            <label class="formCheckLabel" for="{{this}}">{{this}}</label> 
+          </div>
+        {{/each}} 
+        </div>  
+    </form>
+     {{!-- <button type="submit" class="btn btn-primary btn-go-and-find new-btn">search</button> --}}
   </div>
-</div> --}}
+ 
+
+<div class="one">
+   {{#each owners}}
+   <div class="card" style="width: 18rem;">
+      <img src="{{this.image}}" alt="">
+        <div class="card-body">
+          <a href="/allpetowners/{{ this._id }}"></a>
+          <p class="card-title">{{this.name}} & {{ownerPetName}} </p>
+          <h5 class="card-text city">{{this.city}}</h5>
+          <a href="/{{this._id}}/ownerdetails" class="btn btn-primary stretched-link card-btn">go to profile</a>
+        </div>
+      </div>
+    {{/each}} 
+</div> 
+ 
+</section>
+
+
+    
 
  
+
+
+
