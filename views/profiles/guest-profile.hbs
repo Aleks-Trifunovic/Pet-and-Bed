@@ -1,16 +1,35 @@
-<h1>Welcome to your profile {{userData.name}}</h1>
+<h1 class="greetings">Welcome to your profile, {{userData.name}}!</h1>
 
-<h2>Your User data:</h2>
-<h6><img src={{userData.image}}></h6>
-<h6>name: {{userData.name}}</h6>
-<h6>email: {{userData.email}}</h6>
-<h6>address: {{userData.address}}</h6>
-<h6>city: {{userData.city}}</h6>
-<h6>country: {{userData.country}}</h6>
-<h6>your pet preference: {{userData.guestPet}}</h6>
-<h6>about you: {{userData.aboutMe}}</h6>
+ <div class="btn-section">
+    <div class="go-to-all profile-btn">
+      <a href="/{{userData._id}}/guestEdit"> <button type="button" class="btn btn-outline-secondary btn-profile">edit your profile</button></a>
+      <a href="/{{userData._id}}/guestDelete"> <button type="button" class="btn btn-outline-secondary btn-profile">delete your profile</button></a>    
+    </div>
+</div>
 
 
+<div class="box">
 
- <a href="/{{userData._id}}/guestEdit"> <button type="button" class="btn btn-outline-secondary">Edit your details</button></a>
- <a href="/{{userData._id}}/guestDelete"> <button type="button" class="btn btn-outline-secondary">Delete your details</button></a>
+  <div class="card card-big mb-3" style="max-width: 1200px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img class="profile-pic" src={{userData.image}}>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h2 class="card-title"><strong>{{userData.name}}</strong> </h2>
+        <br>
+    <p class="text"> <strong>email:</strong> {{userData.email}}</p>
+      <p class="text"><strong>adress:</strong> {{userData.address}}</p>
+      <p class="text"><strong>city: </strong> {{userData.city}}</p>
+      <p class="text"><strong>country:</strong> {{userData.country}}</p>
+      <br>
+      <p class="text"><strong>my preference for pet:</strong> {{userData.guestPet}}</p>
+      <p class="text"><strong>about me:</strong> {{userData.aboutMe}}</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
