@@ -15,6 +15,9 @@
        CSS for Desktops
   } */
 
+  /* @import all-pet-lovers.hbs;
+  @import all-pet-owners.hbs; */
+
 body {
   margin: 0px;
   font-family: 10px "Raleway", sans-serif;
@@ -181,9 +184,9 @@ p {
 }
 
 .match {
-  margin-top: 50px;
-  margin-left: 150px;
-  width: 100%;
+  margin-top: 10px;
+  margin-left: 100px;
+  width: 120%;
   height: 450px;
   z-index: -1;
 }
@@ -200,9 +203,9 @@ p {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: 500px;
+  width: 400px;
   align-items: center;
-  margin: 0px 140px;
+  margin: 0px 80px;
   align-content: space-around;
 }
 
@@ -211,7 +214,7 @@ p {
   color: #f6f0e4;
   background-color: #1f2257;
   border-radius: 25px;
-  width: 250%;
+  width: 200%;
   height: 50px;
 }
 
@@ -247,8 +250,6 @@ footer > p {
   font-size: 1em;
 }
 
-/* sign uo owner page =============================== */
-
 .greetings {
   font-size: 4em;
   font-weight: 800;
@@ -262,34 +263,24 @@ footer > p {
 }
 
 .sign-up-in-container {
+  /* background-color: teal; */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
   align-content: center;
-  margin-bottom: 350px;
+  margin-bottom: 200px;
 }
 
-.sign-up-container {
-  /* background-color: red; */
-  width: 800px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: stretch;
-  align-content: flex-start;
-  margin: 50px 0px 200px -400px;
-}
 .cat2 {
-  margin-top: 100px;
-  /* justify-content: flex-start; */
+  margin-top: -300px; 
+  margin-right: 100px;
 }
 
 .blue-btn {
   margin-top: 40px;
-  width: 150%;
+  width: 50%;
 }
 
 .form-control {
@@ -307,24 +298,32 @@ footer > p {
 }
 
 .form-label {
+  margin: 15px 0px;
+}
+
+.form-check {
   margin-bottom: 10px;
 }
 
 /* sign in owner page =============================== */
 
-form {
+.sign-up-in-container-wide  form {
+  /* background-color: thistle; */
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: stretch;
   align-content: space-around;
-  margin: 0px 0px -400px;
-  width: 200px;
+  width: 400px;
+  margin-top: 50px;
 }
 
 form > .logIn-form {
   margin: 25px;
+}
+
+.sign-up-in-container-wide > .form-control {
+  width: 300px;
 }
 
 /* all owners page======================================== */
@@ -339,21 +338,28 @@ form > .logIn-form {
 .wellcomeOwner {
   margin-left: 20px;
 }
-/*error =============================== */
+
+
+
+/* error =============================== */
+
 div.error {
   position: fixed;
   top: 40px;
   left: 130px;
   font-size: 1.3em;
-  font-family: “Raleway”, sans-serif;
+  font-family: "Raleway", sans-serif;
   font-weight: 500;
-  color: #F6F0E4;
+  color: #f6f0e4;
   background-color: #EB5524;
   padding: 5px 50px;
-  border-radius: 25px;
+  border-radius: 25px; 
 }
+
 .horizontal-form {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  
+  width: 300px;
 }

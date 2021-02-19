@@ -2,7 +2,7 @@
 <div class="horizontal-form">
 <form method="POST" action="/filteredowners">
 {{#each cities}}
-  <div class="form-check guest-form">
+  <div class="form-check guest-form>
     <input value="{{this}}" class="form-check-input" type="radio" name="ownerCity" id="flexRadioDefault1">
     <label class="formCheckLabel" for="{{this}}" >{{this}}</label>
   </div>
@@ -13,16 +13,32 @@
     <label class="formCheckLabel" for="{{this}}">{{this}}</label>
   </div>
 {{/each}}
-  <button type="submit" class="btn btn-primary btn-go-and-find">search</button>
+
+  <button type="submit" class="btn btn-primary">search</button>
   </form>
  {{#each owners}}
-  <div class="found-match">
+  <div>
     <a href="/allpetowners/{{ this._id }}"></a>
       <div><img src="{{this.image}}" alt=""></div>
-      <div class="names">{{this.name}} & {{ownerPetName}} </div>
-      <div class="city">{{this.city}}</div>
-      <a class="nav-link" href="/{{this._id}}/ownerdetails"><button type="button" class="btn btn-outline-secondary mach-found">go to profile</button></a>
+      <div class="petName">{{this.name}} & {{ownerPetName}} </div>  
+      <div class="petCity">{{this.city}}</div>
+      <a class="nav-link" href="/{{this._id}}/ownerdetails"><button type="button" class="btn btn-outline-secondary">go to profile</button></a>
       <br>
   </div>
- {{/each}}
+      
+ {{/each}} 
+
  </div>
+
+ {{!-- cards bootstrap --}}
+
+ {{!-- <div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card with stretched link</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary stretched-link">Go somewhere</a>
+  </div>
+</div> --}}
+
+ 
