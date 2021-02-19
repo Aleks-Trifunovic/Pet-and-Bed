@@ -1,66 +1,80 @@
-<h1 class="wellcomeGuest">Welcome Guest, please sign in:</h1>
+<header>
+  <h1 class="greetings">Hello, pet lover!</h1>
+</header>
 
-<form class="guestForm" method="POST" action="/guestSignUp">
-  <div class="guestForm"><img src="" alt=""></div>
-  
-  <div class="guest-form">
-    <label for="example-name" class="form-label">Name</label>
-    <input name="guestName" type="text" class="form-control" id="example-name">
+<div class="sign-up-in-container">
+    <div class="guest-form">
+        <form class="guestForm" method="POST" action="/guestSignUp">
+        <div class="guestForm"><img src="" alt=""></div>
+        
+          <label for="example-name" class="form-label">Name</label>
+          <input name="guestName" type="text" class="form-control" id="example-name">
+          <label for="example-input-email" class="form-label">Email</label>
+          <input name="guestEmail" type="Email" class="form-control" id="example-email">
+        
+          <label for="example-street" class="form-label">Address</label>
+          <input name="guestAddress" type="text" class="form-control" id="example-address">
+          
+        <br>
 
-    <label for="example-input-email" class="form-label">Email</label>
-    <input name="guestEmail" type="Email" class="form-control" id="example-email">
-  
-  </div>
+        <div class="form-check guest-form">
+          <input value="Amsterdam" class="form-check-input" type="radio" name="guestCity" id="flexRadioDefault1">
+          <label class="formCheckLabel" for="Amsterdam" >Amsterdam</label>
+        </div>
+        <div class="form-check guest-form"> 
+          <input value="Berlin" class="form-check-input"  type="radio" name="guestCity" id="flexRadioDefault2">
+          <label class="formCheckLabel" for="Berlin">Berlin</label>
+        </div>
 
-  <div class="guest-form">
-    <label for="example-street" class="form-label">Address</label>
-    <input name="guestAddress" type="text" class="form-control" id="example-address">
-    
-  <div class="form-check guest-form">
-    <input value="Amsterdam" class="form-check-input" type="radio" name="guestCity" id="flexRadioDefault1">
-    <label class="formCheckLabel" for="Amsterdam" >Amsterdam</label>
-  </div>
-  <div class="form-check guest-form"> 
-    <input value="Berlin" class="form-check-input"  type="radio" name="guestCity" id="flexRadioDefault2">
-    <label class="formCheckLabel" for="Berlin">
-      Berlin
-    </label>
-  </div>
-<br>
-  <div>
-    <div class="form-check guest-form">
-      <input value="Netherlands" class="form-check-input" type="radio" name="guestCountry" id="flexRadioDefault1">
-      <label class="formCheckLabel" for="Netherlands">
-        Netherlands
-      </label>
-    </div>
-    <div class="form-check guest-form">
-      <input value="Germany" class="form-check-input"  type="radio" name="guestCountry" id="flexRadioDefault2">
-      <label class="formCheckLabel" for="Germany">
-        Germany
-      </label>
-    </div>
-  </div>
-  <div>
-    <label for="example-password" class="form-label">Password</label>
-    <input name="guestPassword" type="password" class="form-control" id="example-password">
-  </div>
-    <div class="form-check guest-form">
-    <input value="cat" class="form-check-input" type="radio" name="guestPet" id="flexRadioDefault1">
-    <label class="formCheckLabel" for="cat" >Cat</label>
-  </div>
-    <div class="form-check guest-form">
-    <input value="dog" class="form-check-input" type="radio" name="guestPet" id="flexRadioDefault1">
-    <label class="formCheckLabel" for="dog">Dog</label>
-  </div>
-  </div>
-    <div class="form-check guest-form">
-    <input value="both" class="form-check-input" type="radio" name="guestPet" id="flexRadioDefault1">
-    <label class="formCheckLabel" for="both">Both</label>
-  </div>
-  <div class="guest-form">
-    <label for="example-name" class="form-label">About me</label>
-    <input name="aboutMe" type="text" class="form-control" id="example-name"></div>
-<br>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+        <br>
+
+        <div>
+          <div class="form-check guest-form">
+            <input value="Netherlands" class="form-check-input" type="radio" name="guestCountry" id="flexRadioDefault1">
+            <label class="formCheckLabel" for="Netherlands">Netherlands</label>
+          </div>
+          <div class="form-check guest-form">
+            <input value="Germany" class="form-check-input"  type="radio" name="guestCountry" id="flexRadioDefault2">
+            <label class="formCheckLabel" for="Germany"> Germany</label>
+          </div>
+        </div>
+
+        <br>
+
+          <label for="example-password" class="form-label">Password</label>
+          <input name="guestPassword" type="password" class="form-control" id="example-password">
+        
+        <br>
+
+        <div class="form-check guest-form">
+          <input value="cat" class="form-check-input" type="radio" name="guestPet" id="flexRadioDefault1">
+          <label class="formCheckLabel" for="cat" >Cat</label>
+        </div>
+
+        <div class="form-check guest-form">
+          <input value="dog" class="form-check-input" type="radio" name="guestPet" id="flexRadioDefault1">
+          <label class="formCheckLabel" for="dog">Dog</label>
+        </div>
+      
+        <div class="form-check guest-form">
+          <input value="both" class="form-check-input" type="radio" name="guestPet" id="flexRadioDefault1">
+          <label class="formCheckLabel" for="both">Both</label>
+        </div>
+
+        <br>
+
+          <label for="example-name" class="form-label">About me</label>
+          <input name="aboutMe" type="text" class="form-control" id="example-name">
+
+          <button type="submit" class="btn btn-primary blue-btn btn-go-and-find blue-btn">submit</button>
+          </form>
+        
+    </div>  
+  <img class="cat3" src="images/blackCat.jpg" alt="leg and cat">  
+</div>
+
+
+
+
+
+        

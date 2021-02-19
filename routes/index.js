@@ -130,7 +130,7 @@ router.post("/:id/ownerEdit", (req,res) => {
     .catch(()=> {
       console.log("Edit failed")
     })
-  res.render("profiles/owner-edit.hbs", {userData});
+  // res.render("profiles/owner-edit.hbs", {userData});
 })
 //delete
 router.get("/:id/ownerDelete", (req,res) =>{
@@ -235,6 +235,26 @@ router.post('/uploadGuest', uploader.single("imageUrl"), (req, res, next) => {
     // You will get the image url in 'req.file.path'
     // Your code to store your url in your database should be here
 })
+
+router.post("/uploadOwner", uploader.single("imageUrl"), (req, res, next) => {
+  // the uploader.single() callback will send the file to cloudinary and get you and obj with the url in return
+  console.log("file is: ", req.file);
+  console.log(req.session.userData);
+
+  if (!req.file) {
+    console.log("there was an error uploading the file");
+    next(new Error("No file uploaded!"));
+    return;
+  }
+  ownerModel.findByIdAndUpdate(req.session.userData._id, { image: req.file.path })
+    .then(() => {
+      res.redirect("/ownerProfile");
+    })
+    .catch(() => {
+      console.log("something went wrong adding photo");
+    });
+});
+
 
 //delete
 router.get("/:id/guestDelete", (req,res) =>{

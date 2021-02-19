@@ -1,31 +1,43 @@
 <h1 class="greetingsTwo">Find your perfect match!</h1>
 
-<form method="POST" action="/filteredGuests">
+<section class="window"></section>
 
-{{#each cities}}
+  {{!-- horizontal serch nav --}}
+  <div class="horizontal-form">
+    <form method="POST" action="/filteredGuests">
+     <button type="submit" class="btn btn-primary btn-go-and-find new-btn">search</button>
 
-  <div class="form-check guest-form">
-    <input value="{{this}}" class="form-check-input" type="radio" name="guestCity" id="flexRadioDefault1">
-    <label class="formCheckLabel" for="{{this}}" >{{this}}</label>
+      {{#each cities}}
+        <div class="form-check guest-form">
+          <input value="{{this}}" class="form-check-input" type="radio" name="guestCity" id="flexRadioDefault1">
+          <label class="formCheckLabel" for="{{this}}" >{{this}}</label>
+        </div>
+      {{/each}}
+
+      <div class="pet-choice">
+        {{#each petType}}
+          <div class="form-check guest-form">
+            <input value="{{this}}" class="form-check-input" type="radio" name="guestPet" id="flexRadioDefault1">
+            <label class="formCheckLabel" for="{{this}}" >{{this}}</label>
+          </div>
+        {{/each}}
+      </div>
+   </form>
   </div>
-{{/each}}
 
-{{#each petType}}
-  <div class="form-check guest-form">
-    <input value="{{this}}" class="form-check-input" type="radio" name="guestPet" id="flexRadioDefault1">
-    <label class="formCheckLabel" for="{{this}}" >{{this}}</label>
-  </div>
-  {{/each}}
+  <div class="one">
 
-  <button type="submit" class="btn btn-primary">Search</button>
-  </form>
+    {{#each guests}}
+      <div class="card" style="width: 18rem;">
+        <img src="{{this.image}}" alt="">
+          <div class="card-body">
+           <a href="/allguests/{{ this._id }}"></a>
+            <p class="card-title">{{this.name}}</p>  
+            <h5 class="card-text city">{{this.city}}</h5>
+            <a href="/{{this._id}}/guestdetails" class="btn btn-primary stretched-link card-btn">go to profile</a>
+          </div>
+      </div>
+    {{/each}}
+</div>
 
- {{#each guests}}
-  <a href="/allguests/{{ this._id }}"></a>
-      <div><img src="{{this.image}}" alt=""></div>
-      <div>{{this.name}}</div>  
-      <div>{{this.city}}</div>
-      
-      <a class="nav-link" href="/{{this._id}}/guestdetails"><button type="button" class="btn btn-outline-secondary">Go to profile</button></a>
-      <br>
-{{/each}}
+     {{!-- <a class="nav-link" href="/{{this._id}}/guestdetails"><button type="button" class="btn btn-outline-secondary">Go to profile</button></a> --}}

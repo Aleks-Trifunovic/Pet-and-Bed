@@ -1,12 +1,17 @@
-<h1>Here are your matches</h1>
+<h1 class="greetingsTwo">Here are your matches!</h1>
 
-<a href="/allguests">Edit your search</a>
+<div class="btn-container">
+  <a href="/allguests" class="btn btn-primary btn-go-and-find new-btn">edit search</a>
+</div>
 
-{{#each result}}
-  <a href="/filteredGuests/{{ this._id }}"></a>
-      <div>{{this.name}}</div>  
-      <div>{{this.city}}</div>
-      <a class="nav-link" href="/{{this._id}}/guestdetails"><button type="button" class="btn btn-outline-secondary">Go to profile</button></a>
-      <br>
-      
- {{/each}} 
+<div class="one">
+  {{#each result}}
+    <div class="card" style="width: 18rem;">
+      <img src="{{this.image}}" alt="">
+         <div class="card-body">
+        <a href="/filteredGuests/{{ this._id }}"></a>
+        <p class="card-title">{{this.name}}</p>  
+        <h5 class="card-text city">{{this.city}}</h5>
+        <a href="/{{this._id}}/guestdetails" class="btn btn-primary stretched-link card-btn">go to profile</a>     
+  {{/each}} 
+</div>
